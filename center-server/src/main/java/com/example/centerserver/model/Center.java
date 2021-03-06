@@ -1,10 +1,7 @@
 package com.example.centerserver.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,9 +13,10 @@ public class Center {
     private String address;
     private String city;
     private String phoneNumber;
-    private List<Long> workers;
+    @OneToMany(mappedBy = "center")
+    private List<Worker> workers;
 
-    public Center(String name, String address, String city, String phoneNumber, List<Long> workers) {
+    public Center(String name, String address, String city, String phoneNumber, List<Worker> workers) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -69,11 +67,11 @@ public class Center {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Long> getWorkers() {
+    public List<Worker> getWorkers() {
         return workers;
     }
 
-    public void setWorkers(List<Long> workers) {
+    public void setWorkers(List<Worker> workers) {
         this.workers = workers;
     }
 }

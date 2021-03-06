@@ -3,12 +3,14 @@ package com.example.userserver.service;
 import com.example.userserver.client.CenterClient;
 import com.example.userserver.controller.dto.CenterDTO;
 import com.example.userserver.controller.dto.WorkerDTO;
-import com.example.userserver.model.Client;
+import com.example.userserver.enums.RoleEnum;
+import com.example.userserver.model.Role;
 import com.example.userserver.model.Worker;
 import com.example.userserver.repository.WorkerRepository;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -23,6 +25,8 @@ public class WorkerService {
     @Autowired
     private CenterClient centerClient;
 
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public List<Worker> getAllWorkers(){
         return workerRepository.findAll();
     }
@@ -31,13 +35,14 @@ public class WorkerService {
         return workerRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Worker for that id doesn't exist"));
     }
 
-    //    public Worker(String username, String password, String name, String lastName, String phoneNumber, String occupation, String professionalNumber, Long center) {
     public Worker addWorker(WorkerDTO workerDTO) {
         try {
             CenterDTO center = centerClient.getCenter(workerDTO.getCenter());
             if (center == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not valid center id");
-            Worker worker = new Worker(workerDTO.getUsername(), workerDTO.getPassword(), workerDTO.getName(), workerDTO.getLastName(), workerDTO.getPhoneNumber(),
+            String password = passwordEncoder.encode(workerDTO.getPassword());
+            Worker worker = new Worker(workerDTO.getUsername(), password, workerDTO.getName(), workerDTO.getLastName(), workerDTO.getPhoneNumber(),
                     workerDTO.getOccupation(), workerDTO.getProfessionalNumber(), workerDTO.getCenter());
+            worker.setRole(new Role(RoleEnum.WORKER, worker));
             return workerRepository.save(worker);
         }catch (ResponseStatusException exception) {
             throw exception;
@@ -49,7 +54,7 @@ public class WorkerService {
             CenterDTO center = centerClient.getCenter(workerDTO.getCenter());
             if (center == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not valid center id");
             workerRepository.findById(workerDTO.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Worker for that id doesn't exist"));
-            Worker worker = new Worker(workerDTO.getUsername(), workerDTO.getPassword(), workerDTO.getName(), workerDTO.getLastName(), workerDTO.getPhoneNumber(),
+            Worker worker = new Worker(workerDTO.getUsername(), workerDTO.getName(), workerDTO.getLastName(), workerDTO.getPhoneNumber(),
                     workerDTO.getOccupation(), workerDTO.getProfessionalNumber(), workerDTO.getCenter());
             return workerRepository.save(worker);
         }catch (ResponseStatusException exception) {

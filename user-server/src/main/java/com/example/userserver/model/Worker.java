@@ -16,6 +16,12 @@ public class Worker extends User {
         this.professionalNumber = professionalNumber;
     }
 
+    public Worker(String username, String name, String lastName, String phoneNumber, String occupation, String professionalNumber, Long center) {
+        super(username, name, lastName, phoneNumber, center);
+        this.occupation = occupation;
+        this.professionalNumber = professionalNumber;
+    }
+
     public Worker() {
         super();
     }

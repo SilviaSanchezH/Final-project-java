@@ -10,8 +10,9 @@ public class ClientDTO {
     private Long center;
     private String address;
     private String city;
+    private Role role;
 
-    public ClientDTO(String username, String password, String name, String lastName, String phoneNumber, Long center, String address, String city) {
+    public ClientDTO(String username, String password, String name, String lastName, String phoneNumber, Long center, String address, String city, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -20,6 +21,7 @@ public class ClientDTO {
         this.center = center;
         this.address = address;
         this.city = city;
+        this.role = role;
     }
 
     public ClientDTO() {
@@ -95,5 +97,13 @@ public class ClientDTO {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

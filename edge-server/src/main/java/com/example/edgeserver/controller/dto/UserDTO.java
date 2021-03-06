@@ -8,14 +8,16 @@ public class UserDTO {
     private String lastName;
     private String phoneNumber;
     private Long center;
+    private Role role;
 
-    public UserDTO(String username, String password, String name, String lastName, String phoneNumber, Long center) {
+    public UserDTO(String username, String password, String name, String lastName, String phoneNumber, Long center, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.center = center;
+        this.role = role;
     }
 
     public UserDTO() {
@@ -77,4 +79,11 @@ public class UserDTO {
         this.center = center;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

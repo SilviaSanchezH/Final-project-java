@@ -1,11 +1,11 @@
 package com.example.userserver.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
     @Id
@@ -17,10 +17,20 @@ public class User {
     private String lastName;
     private String phoneNumber;
     private Long center;
+    @OneToOne(mappedBy = "user")
+    private Role role;
 
     public User(String username, String password, String name, String lastName, String phoneNumber, Long center) {
         this.username = username;
         this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.center = center;
+    }
+
+    public User(String username, String name, String lastName, String phoneNumber, Long center) {
+        this.username = username;
         this.name = name;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -84,5 +94,13 @@ public class User {
 
     public void setCenter(Long center) {
         this.center = center;
+    }
+
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

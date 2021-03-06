@@ -10,8 +10,9 @@ public class WorkerDTO {
     private Long center;
     private String occupation;
     private String professionalNumber;
+    private Role role;
 
-    public WorkerDTO(String username, String password, String name, String lastName, String phoneNumber, Long center, String occupation, String professionalNumber) {
+    public WorkerDTO(String username, String password, String name, String lastName, String phoneNumber, Long center, String occupation, String professionalNumber, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -20,6 +21,7 @@ public class WorkerDTO {
         this.center = center;
         this.occupation = occupation;
         this.professionalNumber = professionalNumber;
+        this.role = role;
     }
 
     public WorkerDTO() {
@@ -95,5 +97,13 @@ public class WorkerDTO {
 
     public void setProfessionalNumber(String professionalNumber) {
         this.professionalNumber = professionalNumber;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

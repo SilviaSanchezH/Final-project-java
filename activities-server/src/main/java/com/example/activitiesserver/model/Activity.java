@@ -7,6 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+import org.apache.catalina.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -31,18 +32,20 @@ public class Activity {
     @JsonSerialize(using = LocalTimeSerializer.class)
     private LocalTime time;
     private Long center;
-    private List<Long> users;
-    private List<Long> workers;
 
-    public Activity(String title, String description, ActivityType type, LocalDate date, LocalTime time, Long center, List<Long> users, List<Long> workers) {
+    @OneToMany(mappedBy = "activity")
+    private List<Client> clients;
+
+    @OneToMany(mappedBy = "activity")
+    private List<Worker> workers;
+
+    public Activity(String title, String description, ActivityType type, LocalDate date, LocalTime time, Long center) {
         this.title = title;
         this.description = description;
         this.type = type;
         this.date = date;
         this.time = time;
         this.center = center;
-        this.users = users;
-        this.workers = workers;
     }
 
     public Activity() {
@@ -104,19 +107,19 @@ public class Activity {
         this.center = center;
     }
 
-    public List<Long> getUsers() {
-        return users;
+    public List<Client> getClients() {
+        return clients;
     }
 
-    public void setUsers(List<Long> users) {
-        this.users = users;
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
-    public List<Long> getWorkers() {
+    public List<Worker> getWorkers() {
         return workers;
     }
 
-    public void setWorkers(List<Long> workers) {
+    public void setWorkers(List<Worker> workers) {
         this.workers = workers;
     }
 }

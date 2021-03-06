@@ -16,6 +16,12 @@ public class Client extends User{
         this.city = city;
     }
 
+    public Client(String username, String name, String lastName, String phoneNumber, String address, String city, Long center) {
+        super(username, name, lastName, phoneNumber, center);
+        this.address = address;
+        this.city = city;
+    }
+
     public Client() {
         super();
     }

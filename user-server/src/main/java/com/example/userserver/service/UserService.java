@@ -12,6 +12,8 @@ public class UserService {
     private UserRepository userRepository;
 
     public User getUser(String username){
-        return userRepository.findUserByUsername(username);
+        User uwu = userRepository.findUserByUsername(username);
+        System.out.println(userRepository.findById(uwu.getId()).get().getRole());
+        return uwu;
     }
 }
