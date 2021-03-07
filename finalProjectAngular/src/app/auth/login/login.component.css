@@ -1,0 +1,59 @@
+.loginForm {
+  min-width: 300px;
+  max-width: 20%;
+  margin: 0px auto;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2rem 3rem;
+  margin: auto;
+  border-radius: 1rem;
+  color: black;
+  margin-top: 10rem;
+}
+
+.loginForm form button {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00adb5;
+  width: 100%;
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  cursor: pointer;
+}
+
+.loginForm form button:hover {
+  background: #00acb5b4;
+}
+
+.loginForm .mat-stroked-button {
+  margin: 10px;
+}
+
+.loginForm .mat-form-field {
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.loginForm .errorMsg {
+  -webkit-box-shadow: 2px 2px 10px 0px rgba(245,198,203,1);
+  -moz-box-shadow: 2px 2px 10px 0px rgba(245,198,203,1);
+  box-shadow: 2px 2px 10px 0px rgba(245,198,203,1);
+  display: flex;
+  align-items: center;
+  border-color: #f5c6cb;
+  border-radius: 5px;
+  color: #721c24;
+  background: #f8d7da;
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0px 15px 0px;
+}
+
+.loginForm .errorMsg mat-icon {
+  margin: 0px 10px 0px 10px;
+}

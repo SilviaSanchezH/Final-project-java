@@ -1,0 +1,33 @@
+<div class="login">
+  <mat-card class="loginForm">
+    <form method="post" (ngSubmit)="logIn()" autocomplete="off" [formGroup]="loginForm">
+      <h1>Inicio de sesión</h1>
+
+      <mat-form-field class="">
+        <mat-label>Username</mat-label>
+        <input matInput [formControl]="username" placeholder="Ex. user" type="text"
+          formControlName="username" [class.is-invalid]="username.invalid && username.touched">
+        <mat-error *ngIf="username.hasError('required')">
+          El usuario es necesario
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [formControl]="password" placeholder="Contraseña" type="password"
+          formControlName="password" [class.is-invalid]="password.invalid && password.touched">
+        <mat-error *ngIf="password.hasError('required')">
+          La contraseña es necesaria
+        </mat-error>
+      </mat-form-field>
+
+      <button type="submit">Iniciar sesión</button>
+      <div class="errorMsg" *ngIf="notExists">
+        <mat-icon>error</mat-icon> Usuario o contraseña incorrectos
+      </div>
+      <div class="errorMsg" *ngIf="error">
+        <mat-icon>error</mat-icon> Se ha producido un error. Inténtalo de nuevo.
+      </div>
+    </form>
+  </mat-card>
+</div>
