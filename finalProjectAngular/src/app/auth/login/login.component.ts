@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
     this.notExists = false; this.error = false
     if(this.loginForm.valid) {
       this.loginService.logIn(this.loginForm.value).subscribe((response: LogInResponseDto) => {
-        if(response.data) {
-          this.storageService.setCurrentSession(response.data)
+        if(response.token) {
+          this.storageService.setCurrentSession(response)
           this.router.navigate(['/'])
         }
       }, error => {

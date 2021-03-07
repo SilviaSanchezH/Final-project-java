@@ -2,6 +2,7 @@ package com.example.edgeserver.controller.impl;
 
 import com.example.edgeserver.security.AuthenticationRequest;
 import com.example.edgeserver.security.AuthenticationResponse;
+import com.example.edgeserver.security.CustomUserDetails;
 import com.example.edgeserver.security.JwtUtils;
 import com.example.edgeserver.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class AuthController {
 
@@ -28,7 +27,6 @@ public class AuthController {
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
-
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
@@ -44,11 +42,11 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        final UserDetails userDetails = userDetailsService
+        final CustomUserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
 
         final String jwt = jwtUtils.generateToken(userDetails);
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getName(), userDetails.getRole()));
     }
 }

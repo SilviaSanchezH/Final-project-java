@@ -1,0 +1,19 @@
+.navigator{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: aqua;
+  width: 100vw;
+  padding: 0;
+}
+
+.navigator div{
+  margin: 20px;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.logout {
+  margin-right: 10px !important;
+  margin-left: auto !important;
+}

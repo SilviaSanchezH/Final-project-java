@@ -9,11 +9,23 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { CoreModule } from './core';
 import { MaterialModule } from './material.module';
+import { ActivityListComponent } from './activities/activity-list/activity-list.component';
+import { ActivityAddEditComponent } from './activities/activity-add-edit/activity-add-edit.component';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+import { ContactAddEditComponent } from './contacts/contact-add-edit/contact-add-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ActivityListComponent,
+    ActivityAddEditComponent,
+    NavigatorComponent,
+    LogoutComponent,
+    ContactListComponent,
+    ContactAddEditComponent
   ],
   imports: [
     BrowserModule,

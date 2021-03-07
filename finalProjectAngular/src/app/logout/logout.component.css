@@ -1,0 +1,10 @@
+  
+.logoutDiv {
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.logoutDiv button {
+  margin: 10px;
+}

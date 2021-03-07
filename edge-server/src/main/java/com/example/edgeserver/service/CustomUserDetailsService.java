@@ -16,7 +16,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserClient userClient;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             UserDTO user = userClient.getUser(username);
             if(user == null) throw new UsernameNotFoundException("User does not exist");

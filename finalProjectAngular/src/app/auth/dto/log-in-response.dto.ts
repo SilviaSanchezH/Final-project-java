@@ -1,11 +1,7 @@
-  
 export class LogInResponseDto {
-  data: {
-    token: string
-    user: {
-      id: string
-      username: string
-      name: string
-    }
-  }
+  token: string;
+  id: string;
+  username: string;
+  name: string;
+  role: string;
 }
