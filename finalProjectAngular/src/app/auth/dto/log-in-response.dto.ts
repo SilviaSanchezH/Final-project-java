@@ -4,4 +4,5 @@ export class LogInResponseDto {
   username: string;
   name: string;
   role: string;
+  center: number;
 }

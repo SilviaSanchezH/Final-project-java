@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+    <form (ngSubmit)="submit()" [formGroup]="activityForm">
+
+        <mat-form-field>
+            <mat-label>Título</mat-label>
+            <input matInput [formControl]="title" type="text" formControlName="title"
+                [class.is-invalid]="title.invalid && title.touched">
+            <mat-error *ngIf="title.hasError('required')">
+                El título es necesario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <input matInput [formControl]="description" type="text" formControlName="description"
+                [class.is-invalid]="description.invalid && description.touched">
+            <mat-error *ngIf="description.hasError('required')">
+                La descripción es necesaria
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="selectedType" name="type" formControlName="type"
+            [class.is-invalid]="type.invalid && type.touched">
+                <mat-option *ngFor="let type of types" [value]="type.value">
+                    {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="type.hasError('required')">
+                El tipo es necesario
+            </mat-error>
+        </mat-form-field>
+
+
+
+
+
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button (click)="submit()">OK</button>
+</div>

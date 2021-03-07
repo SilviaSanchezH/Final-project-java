@@ -4,7 +4,7 @@ export class Activity {
   description: string;
   type: string;
   date: string;
-  localTime: string;
+  time: string;
   center: number;
   users: number[];
   workers: number[];

@@ -15,6 +15,8 @@ import { NavigatorComponent } from './navigator/navigator.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { ContactAddEditComponent } from './contacts/contact-add-edit/contact-add-edit.component';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
+import { EditActivityComponent } from './dialogs/edit-activity/edit-activity.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ContactAddEditComponent } from './contacts/contact-add-edit/contact-add
     NavigatorComponent,
     LogoutComponent,
     ContactListComponent,
-    ContactAddEditComponent
+    ContactAddEditComponent,
+    ConfirmationDialogComponent,
+    EditActivityComponent
   ],
   imports: [
     BrowserModule,

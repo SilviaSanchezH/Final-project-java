@@ -20,8 +20,6 @@ public class CustomUserDetails implements UserDetails {
 
         Collection<GrantedAuthority> authorities = new HashSet<>();
 
-        System.out.println(user.getUsername());
-
         authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().getName()));
 
         return authorities;
@@ -47,6 +45,10 @@ public class CustomUserDetails implements UserDetails {
 
     public String getRole() {
         return user.getRole().getName().toString();
+    }
+
+    public Long getCenter() {
+        return user.getCenter();
     }
 
 

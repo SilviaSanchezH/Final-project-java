@@ -1,0 +1,17 @@
+.activities-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.activity-card {
+  max-width: 500px;
+  margin: 15px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}

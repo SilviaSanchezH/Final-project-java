@@ -1,1 +1,30 @@
-<p>activity-list works!</p>
+<div class="activities-container">
+  <mat-card class="activity-card" *ngFor="let activity of activitiesList">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{activity.title}}</mat-card-title>
+      <mat-card-subtitle>{{activity.type}} - {{center.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <div class="description">
+        <p>{{activity.description}}</p>
+      </div>
+      <div class="date">
+        <p>{{activity.date}}</p>
+        <p>{{activity.time}}</p>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="actions">
+        <button mat-button>¡ME APUNTO!</button>
+        <div class="worker-buttons" *ngIf="loggedUser?.role !== 'WORKER'">
+          <button mat-button (click)="editActivity(activity)">Editar</button>
+          <button mat-button (click)="deleteActivity(activity)">Eliminar</button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

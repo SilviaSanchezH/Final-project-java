@@ -9,13 +9,15 @@ public class AuthenticationResponse implements Serializable {
     private final String username;
     private final String name;
     private final String role;
+    private final Long center;
 
-    public AuthenticationResponse(String token, Long id, String username, String name, String role) {
+    public AuthenticationResponse(String token, Long id, String username, String name, String role, Long center) {
         this.token = token;
         this.id = id;
         this.username = username;
         this.name = name;
         this.role = role;
+        this.center = center;
     }
 
     public String getToken() {
@@ -36,5 +38,9 @@ public class AuthenticationResponse implements Serializable {
 
     public String getRole() {
         return role;
+    }
+
+    public Long getCenter() {
+        return center;
     }
 }
