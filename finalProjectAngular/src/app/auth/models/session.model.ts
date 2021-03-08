@@ -1,6 +1,6 @@
 export interface Session {
   token: string
-  id: string
+  id: number
   username: string
   name: string
   role: string

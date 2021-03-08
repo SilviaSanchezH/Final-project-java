@@ -23,7 +23,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Tipo</mat-label>
             <mat-select [(ngModel)]="selectedType" name="type" formControlName="type"
-            [class.is-invalid]="type.invalid && type.touched">
+                [class.is-invalid]="type.invalid && type.touched">
                 <mat-option *ngFor="let type of types" [value]="type.value">
                     {{type.viewValue}}
                 </mat-option>
@@ -33,8 +33,28 @@
             </mat-error>
         </mat-form-field>
 
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput [formControl]="date" [matDatepicker]="picker" formControlName="date"
+                [(ngModel)]="selectedDate" disabled [min]="minDate">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+            <mat-error *ngIf="date.hasError('required') && date.touched">Creation date is
+                required</mat-error>
+        </mat-form-field>
 
-
+        <mat-form-field>
+            <mat-label>Hora</mat-label>
+            <div class="time-picker">
+                <input matInput [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly [formControl]="time" formControlName="time">
+                <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+            </div>
+            <mat-error *ngIf="time.hasError('required')">
+                La hora es necesaria
+            </mat-error>
+        </mat-form-field>
 
 
     </form>

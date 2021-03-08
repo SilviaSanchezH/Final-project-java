@@ -66,4 +66,16 @@ public class ActivityController {
     public void deleteActivity(@PathVariable Long id) {
         activityService.deleteActivity(id);
     }
+
+    @PostMapping("/activity/{activityId}/worker/{workerId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void addWorkerToActivity(@PathVariable Long activityId, @PathVariable Long workerId) {
+        activityService.addWorkerToActivity(activityId, workerId);
+    }
+
+    @PostMapping("/activity/{activityId}/client/{clientId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void addClientToActivity(@PathVariable Long activityId, @PathVariable Long clientId) {
+        activityService.addClientToActivity(activityId, clientId);
+    }
 }

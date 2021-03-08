@@ -17,6 +17,9 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
 import { ContactAddEditComponent } from './contacts/contact-add-edit/contact-add-edit.component';
 import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
 import { EditActivityComponent } from './dialogs/edit-activity/edit-activity.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -39,9 +42,13 @@ import { EditActivityComponent } from './dialogs/edit-activity/edit-activity.com
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    NgxMaterialTimepickerModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

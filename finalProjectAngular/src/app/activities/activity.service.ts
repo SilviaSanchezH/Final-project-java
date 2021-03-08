@@ -49,4 +49,12 @@ export class ActivityService {
   deleteActivity(id: number): Observable<void> {
     return this.httpClient.delete<void>(environment.API_URL + 'activity/'+ id, {headers: {'Authorization': `Bearer ${this.storageService.getCurrentToken()}`}})
   }
+
+  addWorkerToActivity(activityId: number, workerId: number): Observable<void> {
+    return this.httpClient.post<void>(environment.API_URL + 'activity/' + activityId + '/worker/' + workerId,  {headers: {'Authorization': `Bearer ${this.storageService.getCurrentToken()}`}})
+  }
+
+  addClientToActivity(activityId: number, clientId: number): Observable<void> {
+    return this.httpClient.post<void>(environment.API_URL + 'activity/' + activityId + '/client/' + clientId,  {headers: {'Authorization': `Bearer ${this.storageService.getCurrentToken()}`}})
+  }
 }

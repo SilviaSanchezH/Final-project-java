@@ -1,0 +1,7 @@
+.time-picker {
+    display: flex;
+}
+
+ngx-material-timepicker-content {
+    z-index: 10;
+}

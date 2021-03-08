@@ -90,4 +90,20 @@ public class ActivityService {
         activityRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
         activityRepository.deleteById(id);
     }
+
+    public void addWorkerToActivity(Long activityId, Long workerId){
+       Activity activity = activityRepository.findById(activityId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
+       List<Worker> workerList = activity.getWorkers();
+       workerList.add(new Worker(workerId, activity));
+       activity.setWorkers(workerList);
+       activityRepository.save(activity);
+    }
+
+    public void addClientToActivity(Long activityId, Long clientId){
+        Activity activity = activityRepository.findById(activityId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
+        List<Client> clientList = activity.getClients();
+        clientList.add(new Client(clientId, activity));
+        activity.setClients(clientList);
+        activityRepository.save(activity);
+    }
 }

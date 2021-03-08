@@ -4,6 +4,7 @@ import com.example.edgeserver.controller.dto.ActivityDTO;
 import com.example.edgeserver.controller.dto.ClientDTO;
 import com.example.edgeserver.controller.dto.WorkerDTO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,4 +35,11 @@ public interface ActivityClient {
 
     @DeleteMapping("/activity/{id}")
     public void deleteActivity(@PathVariable Long id);
+
+    @PostMapping("/activity/{activityId}/worker/{workerId}")
+    public void addWorkerToActivity(@PathVariable Long activityId, @PathVariable Long workerId);
+
+
+    @PostMapping("/activity/{activityId}/client/{clientId}")
+    public void addClientToActivity(@PathVariable Long activityId, @PathVariable Long clientId);
 }

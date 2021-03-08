@@ -21,6 +21,20 @@ export class ActivityListComponent implements OnInit {
   } as Center;
 
   loggedUser: Session;
+  types = [
+    {
+      value: 'LOCAL_TOUR', 
+      viewValue: 'Excursión local'
+    },
+    {
+      value: 'INSIDE', 
+      viewValue: 'En el centro'
+    },
+    {
+      value: 'TRIP', 
+      viewValue: 'Viaje'
+    }
+  ]
 
   activitiesList: Activity[] = [
     {
@@ -28,7 +42,18 @@ export class ActivityListComponent implements OnInit {
       title: "Caminata",
       description: "Caminata por el campito",
       center: 1, 
-      date: "19/03/2021",
+      date: "2021/03/08",
+      time: "7:00 PM",
+      type: "LOCAL_TOUR",
+      users: [],
+      workers: []
+    },
+    {
+      id: 1,
+      title: "Caminata",
+      description: "Caminata por el campito",
+      center: 1, 
+      date: "2021/03/08",
       time: "17:00",
       type: "LOCAL_TOUR",
       users: [],
@@ -39,7 +64,7 @@ export class ActivityListComponent implements OnInit {
       title: "Caminata",
       description: "Caminata por el campito",
       center: 1, 
-      date: "19/03/2021",
+      date: "2021/03/08",
       time: "17:00",
       type: "LOCAL_TOUR",
       users: [],
@@ -50,7 +75,7 @@ export class ActivityListComponent implements OnInit {
       title: "Caminata",
       description: "Caminata por el campito",
       center: 1, 
-      date: "19/03/2021",
+      date: "2021/03/08",
       time: "17:00",
       type: "LOCAL_TOUR",
       users: [],
@@ -61,7 +86,7 @@ export class ActivityListComponent implements OnInit {
       title: "Caminata",
       description: "Caminata por el campito",
       center: 1, 
-      date: "19/03/2021",
+      date: "2021/03/08",
       time: "17:00",
       type: "LOCAL_TOUR",
       users: [],
@@ -72,18 +97,7 @@ export class ActivityListComponent implements OnInit {
       title: "Caminata",
       description: "Caminata por el campito",
       center: 1, 
-      date: "19/03/2021",
-      time: "17:00",
-      type: "LOCAL_TOUR",
-      users: [],
-      workers: []
-    },
-    {
-      id: 1,
-      title: "Caminata",
-      description: "Caminata por el campito",
-      center: 1, 
-      date: "19/03/2021",
+      date: "2021/03/08",
       time: "17:00",
       type: "LOCAL_TOUR",
       users: [],
@@ -116,7 +130,18 @@ export class ActivityListComponent implements OnInit {
     });
   }
 
-  //TODO: FALTA METODO AÑADIR CON SU BOTÓN
+  addActivity(){
+    const dialogRef = this.dialog.open(EditActivityComponent, {
+      width: '600px',
+      data: { title: 'Añadir actividad', body: undefined },
+      disableClose: true
+    });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.getActivities();
+        }
+    });
+  }
 
   editActivity(activity: Activity) {
     const dialogRef = this.dialog.open(EditActivityComponent, {
@@ -129,6 +154,23 @@ export class ActivityListComponent implements OnInit {
         this.getActivities();
       }
     });
+  }
+
+  goToActivity(activity: Activity) {
+    if(this.loggedUser?.role === 'WORKER'){
+      this.activityService.addWorkerToActivity(activity.id, this.loggedUser?.id).subscribe(() => {
+        this.getActivities();
+      }, error => {
+        console.log(error);
+      });
+    }else{
+      this.activityService.addClientToActivity(activity.id, this.loggedUser?.id).subscribe(() => {
+        this.getActivities();
+      }, error => {
+        console.log(error);
+      });
+    }
+    
   }
 
   deleteActivity(activity: Activity) {
@@ -147,6 +189,23 @@ export class ActivityListComponent implements OnInit {
         });
       }
     });
+  }
+
+  getTypeViewValue(value: string): string {
+    return this.types.find(type => type.value === value).viewValue;
+  }
+
+  getImageByType(value: string): string {
+    switch(value) {
+      case 'LOCAL_TOUR':
+        return "../../../assets/activity-types/trip.png";
+      case 'INSIDE':
+        return "../../../assets/activity-types/trip.png";
+      case 'TRIP':
+        return "../../../assets/activity-types/trip.png";
+      default:
+        return "../../../assets/activity-types/trip.png";
+    }
   }
 
 }

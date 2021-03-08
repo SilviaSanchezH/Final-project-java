@@ -14,3 +14,11 @@ body {
 h2 {
   font-family: 'Roboto Mono', monospace !important;
 }
+
+.timepicker-overlay {
+  z-index: 1100 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1100 !important;
+}
