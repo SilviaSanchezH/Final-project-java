@@ -20,6 +20,15 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Role role;
 
+    public User(Long id, String username, String password, String name, String lastName, String phoneNumber, Long center) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.center = center;
+    }
+
     public User(String username, String password, String name, String lastName, String phoneNumber, Long center) {
         this.username = username;
         this.password = password;

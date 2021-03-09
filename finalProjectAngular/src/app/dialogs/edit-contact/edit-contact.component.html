@@ -1,0 +1,106 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+    <form (ngSubmit)="submit()" [formGroup]="contactForm">
+        <mat-form-field *ngIf="!this.data.body || !this.data.body.id">
+            <mat-label>Username</mat-label>
+            <input matInput [formControl]="username" type="text" formControlName="username"
+                [class.is-invalid]="username.invalid && username.touched">
+            <mat-error *ngIf="username.hasError('required')">
+                El nombre de usuario es necesario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="!this.data.body || !this.data.body.id">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [formControl]="password" type="password" formControlName="password"
+                [class.is-invalid]="password.invalid && password.touched">
+            <mat-error *ngIf="password.hasError('required')">
+                La contraseña es necesaria
+            </mat-error>
+            <mat-error *ngIf="password.hasError('minlength')">
+                La contraseña debe tener más de 6 caracteres
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput [formControl]="name" type="text" formControlName="name"
+                [class.is-invalid]="name.invalid && name.touched">
+            <mat-error *ngIf="name.hasError('required')">
+                El nombre es necesario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Apellido</mat-label>
+            <input matInput [formControl]="lastname" type="text" formControlName="lastname"
+                [class.is-invalid]="lastname.invalid && lastname.touched">
+            <mat-error *ngIf="lastname.hasError('required')">
+                El apellido es necesario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Número de teléfono</mat-label>
+            <input matInput [formControl]="phoneNumber" type="text" formControlName="phoneNumber"
+                [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched">
+            <mat-error *ngIf="phoneNumber.hasError('required')">
+                El teléfono es necesario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Centro</mat-label>
+            <mat-select [(ngModel)]="selectedCenter" name="center" formControlName="center"
+                [class.is-invalid]="center.invalid && center.touched">
+                <mat-option *ngFor="let center of centerList" [value]="center.id">
+                    {{center.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="center.hasError('required')">
+                El centro es necesario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="selectedType === 'CLIENT'">
+            <mat-label>Dirección</mat-label>
+            <input matInput [formControl]="address" type="text" formControlName="address"
+                [class.is-invalid]="address.invalid && address.touched">
+            <mat-error *ngIf="address.hasError('required')">
+                La dirección es necesaria
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field *ngIf="selectedType === 'CLIENT'">
+            <mat-label>Ciudad</mat-label>
+            <input matInput [formControl]="city" type="text" formControlName="city"
+                [class.is-invalid]="city.invalid && city.touched">
+            <mat-error *ngIf="city.hasError('required')">
+                La ciudad es necesaria
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="selectedType === 'WORKER'">
+            <mat-label>Número de profesional</mat-label>
+            <input matInput [formControl]="professionalNumber" type="text" formControlName="professionalNumber"
+                [class.is-invalid]="professionalNumber.invalid && professionalNumber.touched">
+            <mat-error *ngIf="professionalNumber.hasError('required')">
+                El número de profesional es necesario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="selectedType === 'WORKER'">
+            <mat-label>Puesto</mat-label>
+            <input matInput [formControl]="occupation" type="text" formControlName="occupation"
+                [class.is-invalid]="occupation.invalid && occupation.touched">
+            <mat-error *ngIf="occupation.hasError('required')">
+                El puesto es necesario
+            </mat-error>
+        </mat-form-field>
+ 
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button (click)="submit()">OK</button>
+</div>

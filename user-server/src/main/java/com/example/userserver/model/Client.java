@@ -9,6 +9,11 @@ public class Client extends User{
     private String address;
     private String city;
 
+    public Client(Long id, String username, String password, String name, String lastName, String phoneNumber, String address, String city, Long center) {
+        super(id, username, password, name, lastName, phoneNumber, center);
+        this.address = address;
+        this.city = city;
+    }
 
     public Client(String username, String password, String name, String lastName, String phoneNumber, String address, String city, Long center) {
         super(username, password, name, lastName, phoneNumber, center);

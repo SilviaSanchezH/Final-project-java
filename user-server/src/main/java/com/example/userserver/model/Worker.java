@@ -10,6 +10,12 @@ public class Worker extends User {
     private String occupation;
     private String professionalNumber;
 
+    public Worker(Long id, String username, String password, String name, String lastName, String phoneNumber, String occupation, String professionalNumber, Long center) {
+        super(id, username, password, name, lastName, phoneNumber, center);
+        this.occupation = occupation;
+        this.professionalNumber = professionalNumber;
+    }
+
     public Worker(String username, String password, String name, String lastName, String phoneNumber, String occupation, String professionalNumber, Long center) {
         super(username, password, name, lastName, phoneNumber, center);
         this.occupation = occupation;

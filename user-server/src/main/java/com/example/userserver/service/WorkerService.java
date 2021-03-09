@@ -53,8 +53,8 @@ public class WorkerService {
         try {
             CenterDTO center = centerClient.getCenter(workerDTO.getCenter());
             if (center == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not valid center id");
-            workerRepository.findById(workerDTO.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Worker for that id doesn't exist"));
-            Worker worker = new Worker(workerDTO.getUsername(), workerDTO.getName(), workerDTO.getLastName(), workerDTO.getPhoneNumber(),
+            Worker beforeWorker = workerRepository.findById(workerDTO.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Worker for that id doesn't exist"));
+            Worker worker = new Worker(workerDTO.getId(), workerDTO.getUsername(), beforeWorker.getPassword(), workerDTO.getName(), workerDTO.getLastName(), workerDTO.getPhoneNumber(),
                     workerDTO.getOccupation(), workerDTO.getProfessionalNumber(), workerDTO.getCenter());
             return workerRepository.save(worker);
         }catch (ResponseStatusException exception) {

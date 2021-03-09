@@ -54,8 +54,8 @@ public class ClientService {
         try {
             CenterDTO center = centerClient.getCenter(clientDTO.getCenter());
             if (center == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not valid center id");
-            clientRepository.findById(clientDTO.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client for that id doesn't exist"));
-            Client client = new Client(clientDTO.getUsername(), clientDTO.getName(), clientDTO.getLastName(), clientDTO.getPhoneNumber(),
+            Client beforeClient = clientRepository.findById(clientDTO.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client for that id doesn't exist"));
+            Client client = new Client(clientDTO.getId(), clientDTO.getUsername(), beforeClient.getPassword(), clientDTO.getName(), clientDTO.getLastName(), clientDTO.getPhoneNumber(),
                     clientDTO.getAddress(),clientDTO.getCity(), clientDTO.getCenter());
             return clientRepository.save(client);
         }catch (ResponseStatusException exception) {

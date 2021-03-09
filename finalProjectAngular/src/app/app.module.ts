@@ -10,15 +10,14 @@ import { LoginComponent } from './auth/login/login.component';
 import { CoreModule } from './core';
 import { MaterialModule } from './material.module';
 import { ActivityListComponent } from './activities/activity-list/activity-list.component';
-import { ActivityAddEditComponent } from './activities/activity-add-edit/activity-add-edit.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
-import { ContactAddEditComponent } from './contacts/contact-add-edit/contact-add-edit.component';
 import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
 import { EditActivityComponent } from './dialogs/edit-activity/edit-activity.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { EditContactComponent } from './dialogs/edit-contact/edit-contact.component';
 
 
 @NgModule({
@@ -26,13 +25,12 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     AppComponent,
     LoginComponent,
     ActivityListComponent,
-    ActivityAddEditComponent,
     NavigatorComponent,
     LogoutComponent,
     ContactListComponent,
-    ContactAddEditComponent,
     ConfirmationDialogComponent,
-    EditActivityComponent
+    EditActivityComponent,
+    EditContactComponent
   ],
   imports: [
     BrowserModule,

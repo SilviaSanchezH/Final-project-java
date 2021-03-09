@@ -1,1 +1,71 @@
-<p>contact-list works!</p>
+<div class="container">
+  <div class="users">
+    <h2 class="users-title">Usuarios</h2>
+    <div class="contacts-container">
+      <mat-accordion *ngFor="let contact of clientList" class="contact">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{getFullName(contact.name, contact.lastname)}}
+              <div class="avatar">
+                <img [src]="getRandomAvatar(contact.id+contact.phoneNumber)" alt="">
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item> Teléfono: {{contact.phoneNumber}} </mat-list-item>
+            <mat-list-item> Centro: {{center?.name}} </mat-list-item>
+            <mat-list-item> Dirección: {{contact.address}} </mat-list-item>
+            <mat-list-item> Ciudad: {{contact.city}} </mat-list-item>
+          </mat-list>
+
+          <div class="actions">
+            <div class="worker-buttons" *ngIf="loggedUser?.role !== 'WORKER'">
+              <button mat-button (click)="editClient(contact)">Editar</button>
+              <button mat-button (click)="deleteClient(contact)">Eliminar</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+  <div class="workers">
+    <h2 class="workers-title">Personal del centro</h2>
+    <div class="workers-container">
+      <mat-accordion *ngFor="let worker of workerList" class="worker">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{getFullName(worker.name, worker.lastname)}}
+              <div class="avatar">
+                <img [src]="getRandomAvatar(worker.id+worker.phoneNumber)" alt="">
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item> Teléfono: {{worker.phoneNumber}} </mat-list-item>
+            <mat-list-item> Centro: {{center?.name}} </mat-list-item>
+            <mat-list-item> Puesto: {{worker.occupation}} </mat-list-item>
+            <mat-list-item> Número profesional: {{worker.professionalNumber}} </mat-list-item>
+          </mat-list>
+
+          <div class="actions">
+            <div class="worker-buttons" *ngIf="loggedUser?.role !== 'WORKER'">
+              <button mat-button (click)="editWorker(worker)">Editar</button>
+              <button mat-button (click)="deleteWorker(worker)">Eliminar</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
+
+<button mat-fab aria-label="Nuevo usuario" matTooltip="Añadir usuario" id="addBtn" [matMenuTriggerFor]="beforeMenu">
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item (click)="addClient()">Añadir usuario</button>
+    <button mat-menu-item (click)="addWorker()">Añadir profesional</button>
+  </mat-menu>
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,49 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+}
+
+.contacts-container {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.workers-container {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+mat-expansion-panel {
+    max-width: 400px !important;
+    margin: 15px;
+}
+
+mat-expansion-panel-header {
+    height: 100px !important;
+}
+
+mat-panel-title {
+    align-items: center !important;
+}
+
+.avatar > img{
+    height: 75px;
+    max-height: max-content;
+    margin: 15px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#addBtn {
+    z-index: 1;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
