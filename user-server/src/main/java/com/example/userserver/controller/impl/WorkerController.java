@@ -1,5 +1,6 @@
 package com.example.userserver.controller.impl;
 
+import com.example.userserver.controller.dto.UpdateWorkerDTO;
 import com.example.userserver.controller.dto.WorkerDTO;
 import com.example.userserver.model.Client;
 import com.example.userserver.model.Worker;
@@ -38,7 +39,7 @@ public class WorkerController {
 
     @PutMapping("/worker/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Worker updateWorker(@PathVariable Long id, @Valid @RequestBody WorkerDTO worker){
+    public Worker updateWorker(@PathVariable Long id, @Valid @RequestBody UpdateWorkerDTO worker){
         worker.setId(id);
         return workerService.updateWorker(worker);
     }
@@ -55,7 +56,7 @@ public class WorkerController {
        return workerService.workersByCenterId(id);
     }
 
-    @GetMapping("/workers/list")
+    @PostMapping("/workers/list")
     @ResponseStatus(HttpStatus.OK)
     public List<Worker> workersList(@RequestBody List<Long> idList) {
         return workerService.getWorkersList(idList);

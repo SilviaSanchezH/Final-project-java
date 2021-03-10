@@ -1,5 +1,7 @@
 package com.example.userserver.model;
 
+import com.example.userserver.enums.Gender;
+
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -8,23 +10,27 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class Client extends User{
     private String address;
     private String city;
+    private int age;
 
-    public Client(Long id, String username, String password, String name, String lastName, String phoneNumber, String address, String city, Long center) {
-        super(id, username, password, name, lastName, phoneNumber, center);
+    public Client(Long id, String username, String password, String name, String lastName, String secondSurname, String phoneNumber, String address, String city, Long center, Gender gender, int age) {
+        super(id, username, secondSurname, password, name, lastName, phoneNumber, center, gender);
         this.address = address;
         this.city = city;
+        this.age = age;
     }
 
-    public Client(String username, String password, String name, String lastName, String phoneNumber, String address, String city, Long center) {
-        super(username, password, name, lastName, phoneNumber, center);
+    public Client(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, String address, String city, Long center, Gender gender, int age) {
+        super(username, password, name, lastName, secondSurname, phoneNumber, center, gender);
         this.address = address;
         this.city = city;
+        this.age = age;
     }
 
-    public Client(String username, String name, String lastName, String phoneNumber, String address, String city, Long center) {
-        super(username, name, lastName, phoneNumber, center);
+    public Client(String username, String name, String lastName, String secondSurname, String phoneNumber, String address, String city, Long center, Gender gender, int age) {
+        super(username, name, lastName, secondSurname, phoneNumber, center, gender);
         this.address = address;
         this.city = city;
+        this.age = age;
     }
 
     public Client() {
@@ -47,4 +53,11 @@ public class Client extends User{
         this.city = city;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.userserver.controller.dto;
 
-public class WorkerDTO {
+public class    UpdateWorkerDTO {
     private Long id;
     private String username;
     private String password;
@@ -9,11 +9,12 @@ public class WorkerDTO {
     private String secondSurname;
     private String phoneNumber;
     private Long center;
-    private String gender;
     private String occupation;
     private String professionalNumber;
+    private String gender;
 
-    public WorkerDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String occupation, String professionalNumber, String gender) {
+    public UpdateWorkerDTO(Long id, String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String occupation, String professionalNumber, String gender) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -26,7 +27,7 @@ public class WorkerDTO {
         this.gender = gender;
     }
 
-    public WorkerDTO() {
+    public UpdateWorkerDTO() {
     }
 
     public Long getId() {
@@ -69,6 +70,14 @@ public class WorkerDTO {
         this.lastName = lastName;
     }
 
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -107,13 +116,5 @@ public class WorkerDTO {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getSecondSurname() {
-        return secondSurname;
-    }
-
-    public void setSecondSurname(String secondSurname) {
-        this.secondSurname = secondSurname;
     }
 }

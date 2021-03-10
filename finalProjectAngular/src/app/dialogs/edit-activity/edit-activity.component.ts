@@ -62,7 +62,6 @@ export class EditActivityComponent implements OnInit{
     this.selectedType = this.data.body?.type;
   }
 
-  //TODO: FAlta date y time en HTML 
   submit() {
     if(this.activityForm.valid) {
       if(this.data.body?.id) {
@@ -70,28 +69,41 @@ export class EditActivityComponent implements OnInit{
           ...this.activityForm.value,
           id: this.data.body.id,
           center: this.data.body.center,
-          users: this.data.body.users,
-          workers: this.data.body.workers
+          date: this.formatDate(this.date.value)
         };
         this.activityService.updateActivity(this.data.body.id, activity).subscribe((response: Activity) => {
           this.dialogRef.close(true);
         }, error => {
-          console.log(error); 
+          console.log(error);
+          if(error.status === 401) {
+            this.storageService.logout()
+          }
         })
       } else {
         const activity: Activity = {
           ...this.activityForm.value,
           center: this.storageService.getCurrentSession()?.center,
           users: [],
-          workers: []
+          workers: [],
+          date: this.formatDate(this.date.value)
         }
         this.activityService.addActivity(activity).subscribe((response: Activity) => {
           this.dialogRef.close(true);
         }, error => {
-          console.log(error); 
+          console.log(error);
+          if(error.status === 401) {
+            this.storageService.logout()
+          }
         })
       }
     }
+  }
+
+  formatDate(date: Date): string{
+    const day = date.getDate()
+    const month = (date.getMonth() + 1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
   }
 
 

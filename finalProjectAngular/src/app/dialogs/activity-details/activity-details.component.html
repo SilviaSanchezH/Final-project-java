@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+    <div class="container">
+        <div class="workers">
+            <h2>Personal</h2>
+            <mat-list>
+                <mat-list-item *ngFor="let worker of workers">{{worker.name}} {{worker.lastName}}</mat-list-item>
+            </mat-list>
+        </div>
+        <div class="clients">
+            <h2>Usuarios</h2>
+            <mat-list>
+                <mat-list-item *ngFor="let client of clients">{{client.name}} {{client.lastName}}</mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">OK</button>
+</div>

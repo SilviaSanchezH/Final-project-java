@@ -6,19 +6,23 @@ public class WorkerDTO {
     private String password;
     private String name;
     private String lastName;
+    private String secondSurname;
     private String phoneNumber;
     private String occupation;
     private String professionalNumber;
+    private String gender;
 
-    public WorkerDTO(Long id, String username, String password, String name, String lastName, String phoneNumber, String occupation, String professionalNumber) {
+    public WorkerDTO(Long id, String username, String password, String name, String lastName, String secondSurname, String phoneNumber, String occupation, String professionalNumber, String gender) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.lastName = lastName;
+        this.secondSurname = secondSurname;
         this.phoneNumber = phoneNumber;
         this.occupation = occupation;
         this.professionalNumber = professionalNumber;
+        this.gender = gender;
     }
 
     public WorkerDTO() {
@@ -86,5 +90,21 @@ public class WorkerDTO {
 
     public void setProfessionalNumber(String professionalNumber) {
         this.professionalNumber = professionalNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 }

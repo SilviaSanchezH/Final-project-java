@@ -9,12 +9,8 @@ CREATE TABLE `center` (
   `name` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+);
 
-CREATE TABLE `worker` (
-  `worker_id` bigint NOT NULL,
-  `center_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`worker_id`),
-  KEY `FKfbee7npk15simk8hqwjxojagh` (`center_id`),
-  CONSTRAINT `FKfbee7npk15simk8hqwjxojagh` FOREIGN KEY (`center_id`) REFERENCES `center` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+INSERT INTO `center` (id, address, city, name, phone_number) VALUES 
+(1, 'Calle oxígeno', 'Madrid', 'Centro Mayores Arbolitos', '919987456'),
+(2, 'Calle laguna', 'Madrid', 'El centrito', '919987476');

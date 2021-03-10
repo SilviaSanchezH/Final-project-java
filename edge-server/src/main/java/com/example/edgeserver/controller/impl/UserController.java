@@ -1,8 +1,6 @@
 package com.example.edgeserver.controller.impl;
 
-import com.example.edgeserver.controller.dto.ClientDTO;
-import com.example.edgeserver.controller.dto.UserDTO;
-import com.example.edgeserver.controller.dto.WorkerDTO;
+import com.example.edgeserver.controller.dto.*;
 import com.example.edgeserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,13 +36,15 @@ public class UserController {
 
     @PostMapping("/worker")
     @ResponseStatus(HttpStatus.CREATED)
-    public WorkerDTO addWorker(@RequestBody @Valid WorkerDTO worker){
+    public WorkerDTO addWorker(@RequestBody @Valid NewWorkerDTO worker){
         return userService.addWorker(worker);
     }
 
     @PutMapping("/worker/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public WorkerDTO updateWorker(@PathVariable Long id, @Valid @RequestBody WorkerDTO worker){
+    public WorkerDTO updateWorker(@PathVariable Long id, @Valid @RequestBody UpdateWorkerDTO worker){
+        System.out.println(worker.getName());
+        System.out.println(worker.getLastName());
         return userService.updateWorker(id, worker);
     }
 
@@ -80,13 +80,13 @@ public class UserController {
 
     @PostMapping("/client")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClientDTO addClient(@Valid @RequestBody ClientDTO client){
+    public ClientDTO addClient(@Valid @RequestBody NewClientDTO client){
         return userService.addClient(client);
     }
 
     @PutMapping("/client/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ClientDTO updateClient(@PathVariable Long id, @Valid @RequestBody ClientDTO client){
+    public ClientDTO updateClient(@PathVariable Long id, @Valid @RequestBody UpdateClientDTO client){
         return userService.updateClient(id, client);
     }
 

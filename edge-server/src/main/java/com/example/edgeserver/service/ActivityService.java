@@ -3,6 +3,7 @@ package com.example.edgeserver.service;
 import com.example.edgeserver.client.ActivityClient;
 import com.example.edgeserver.controller.dto.ActivityDTO;
 import com.example.edgeserver.controller.dto.ClientDTO;
+import com.example.edgeserver.controller.dto.UpdateActivityDTO;
 import com.example.edgeserver.controller.dto.WorkerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,7 +50,7 @@ public class ActivityService {
     }
 
 
-    public ActivityDTO updateActivity(Long id,  ActivityDTO activityDTO){
+    public ActivityDTO updateActivity(Long id,  UpdateActivityDTO activityDTO){
         return activityClient.updateActivity(id, activityDTO);
     }
 

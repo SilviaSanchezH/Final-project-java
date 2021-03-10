@@ -13,15 +13,12 @@ public class Center {
     private String address;
     private String city;
     private String phoneNumber;
-    @OneToMany(mappedBy = "center")
-    private List<Worker> workers;
 
-    public Center(String name, String address, String city, String phoneNumber, List<Worker> workers) {
+    public Center(String name, String address, String city, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.city = city;
         this.phoneNumber = phoneNumber;
-        this.workers = workers;
     }
 
     public Center() {
@@ -65,13 +62,5 @@ public class Center {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public List<Worker> getWorkers() {
-        return workers;
-    }
-
-    public void setWorkers(List<Worker> workers) {
-        this.workers = workers;
     }
 }

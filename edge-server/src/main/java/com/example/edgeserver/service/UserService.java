@@ -1,9 +1,7 @@
 package com.example.edgeserver.service;
 
 import com.example.edgeserver.client.UserClient;
-import com.example.edgeserver.controller.dto.ClientDTO;
-import com.example.edgeserver.controller.dto.UserDTO;
-import com.example.edgeserver.controller.dto.WorkerDTO;
+import com.example.edgeserver.controller.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -25,11 +23,11 @@ public class UserService {
         return userClient.getClient(id);
     }
 
-    public ClientDTO addClient(ClientDTO client) {
+    public ClientDTO addClient(NewClientDTO client) {
         return userClient.addClient(client);
     }
 
-    public ClientDTO updateClient(Long id, ClientDTO client){
+    public ClientDTO updateClient(Long id, UpdateClientDTO client){
         return userClient.updateClient(id, client);
     }
 
@@ -54,11 +52,11 @@ public class UserService {
         return userClient.getWorker(id);
     }
 
-    public WorkerDTO addWorker(WorkerDTO worker){
+    public WorkerDTO addWorker(NewWorkerDTO worker){
         return userClient.addWorker(worker);
     }
 
-    public WorkerDTO updateWorker(Long id, WorkerDTO worker){
+    public WorkerDTO updateWorker(Long id, UpdateWorkerDTO worker){
         return userClient.updateWorker(id, worker);
     }
 

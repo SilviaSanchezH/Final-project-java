@@ -8,6 +8,7 @@ import { Center } from 'src/app/models/center';
 import { Client } from 'src/app/models/client';
 import { User } from 'src/app/models/user';
 import { Worker } from 'src/app/models/worker';
+import { CustomValidators } from 'src/app/utils/custom-validators';
 
 @Component({
   selector: 'app-edit-contact',
@@ -18,13 +19,25 @@ export class EditContactComponent implements OnInit {
 
   contactForm: FormGroup
   selectedType: string;
+  selectedGender: string;
 
-  centerList: Center[] = [
+  genders = [
+    {
+      value: 'FEMALE',
+      viewValue: 'Femenino'
+    },
+    {
+      value: 'MALE',
+      viewValue: 'Masculino'
+    }
+  ]
+
+  centerList: Center[] /* = [
     {
       id: 1,
       name: "OWO"
     }
-  ] as Center[];
+  ] as Center[] */;
   selectedCenter: number;
 
   constructor(
@@ -44,29 +57,35 @@ export class EditContactComponent implements OnInit {
     if(this.data.body instanceof Client) {
       this.selectedType = "CLIENT";
       this.contactForm = this.fb.group({
-        name: [this.data.body?.name || '', [Validators.required]],
-        lastname: [this.data.body?.lastname || '', [Validators.required]],
-        phoneNumber: [this.data.body?.phoneNumber || '', [Validators.required]],
+        name: [this.data.body?.name || '', [Validators.required, CustomValidators.nameValidator]],
+        lastName: [this.data.body?.lastName || '', [Validators.required, CustomValidators.nameValidator]],
+        secondSurname: [this.data.body?.secondSurname || '', [CustomValidators.nameValidator]],
+        age: [this.data.body?.age || '', [Validators.required]],
+        phoneNumber: [this.data.body?.phoneNumber || '', [Validators.required, CustomValidators.phoneValidator]],
         center: [this.data.body?.center || '', [Validators.required]],
         address: [this.data.body?.address || '', [Validators.required]],
         city: [this.data.body?.city || '', [Validators.required]],
         username: [this.data.body?.username || '', Validators.required],
-        password: [this.data.body?.password || '', [Validators.required, Validators.minLength(4)]]
+        password: [this.data.body?.password || '', [Validators.required, Validators.minLength(4)]],
+        gender: [this.data.body?.gender || '', [Validators.required]]
       })
     } else if(this.data.body instanceof Worker) {
       this.selectedType = "WORKER";
       this.contactForm = this.fb.group({
         name: [this.data.body?.name || '', [Validators.required]],
-        lastname: [this.data.body?.lastname || '', [Validators.required]],
+        lastName: [this.data.body?.lastName || '', [Validators.required]],
+        secondSurname: [this.data.body?.secondSurname || '' ,[CustomValidators.nameValidator]],
         phoneNumber: [this.data.body?.phoneNumber || '', [Validators.required]],
         center: [this.data.body?.center || '', [Validators.required]],
         professionalNumber: [this.data.body?.professionalNumber || '', [Validators.required]],
         occupation: [this.data.body?.occupation || '', [Validators.required]],
         username: [this.data.body?.username || '', Validators.required],
-        password: [this.data.body?.password || '', [Validators.required, Validators.minLength(4)]]
+        password: [this.data.body?.password || '', [Validators.required, Validators.minLength(4)]],
+        gender: [this.data.body?.gender || '', [Validators.required]],
       })
     }
     this.selectedCenter = this.data.body.center;
+    this.selectedGender = this.data.body.gender;
 
   }
 
@@ -75,7 +94,6 @@ export class EditContactComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.contactForm);
     if(this.contactForm.valid) {
       if(this.data.body?.id) {
         switch(this.selectedType) {
@@ -84,11 +102,13 @@ export class EditContactComponent implements OnInit {
               ...this.contactForm.value,
               id: this.data.body.id
             }
-            console.log(worker);
             this.contactService.updateWorker(this.data.body?.id, worker).subscribe((response: Worker) => {
               this.dialogRef.close(true);
             }, error => {
               console.log(error);
+              if(error.status === 401) {
+                this.storageService.logout()
+              }
             })
             break;
           case 'CLIENT': 
@@ -96,30 +116,36 @@ export class EditContactComponent implements OnInit {
               ...this.contactForm.value,
               id:this.data.body.id
             };
-            console.log(client);
             this.contactService.updateClient(this.data.body?.id, client).subscribe((response: Client) => {
               this.dialogRef.close(true);
             }, error => {
               console.log(error);
+              if(error.status === 401) {
+                this.storageService.logout()
+              }
             });
             break;
         }
       }else{
         switch(this.selectedType) {
           case 'WORKER':
-            console.log(this.contactForm.value);
             this.contactService.addWorker(this.contactForm.value).subscribe((response: Worker) => {
               this.dialogRef.close(true);
             }, error => {
               console.log(error);
+              if(error.status === 401) {
+                this.storageService.logout()
+              }
             })
             break;
           case 'CLIENT':
-            console.log(this.contactForm.value);
             this.contactService.addClient(this.contactForm.value).subscribe((response: Client) => {
               this.dialogRef.close(true);
             }, error => {
               console.log(error);
+              if(error.status === 401) {
+                this.storageService.logout()
+              }
             });
             break;
         }
@@ -131,8 +157,8 @@ export class EditContactComponent implements OnInit {
     return this.contactForm.get("name")
   }
 
-  get lastname(){
-    return this.contactForm.get("lastname")
+  get lastName(){
+    return this.contactForm.get("lastName")
   }
 
   get phoneNumber(){
@@ -165,6 +191,18 @@ export class EditContactComponent implements OnInit {
 
   get password() {
     return this.contactForm.get("password")
+  }
+
+  get age() {
+    return this.contactForm.get("age")
+  }
+
+  get gender() {
+    return this.contactForm.get("gender")
+  }
+
+  get secondSurname() {
+    return this.contactForm.get("secondSurname")
   }
 
 

@@ -1,3 +1,11 @@
+mat-card-title {
+  cursor: pointer;
+}
+
+mat-card-title:hover {
+  font-weight: bold;
+}
+
 .activities-container {
   margin-top: 15px;
   display: flex;
@@ -14,4 +22,11 @@
 .actions {
   display: flex;
   justify-content: space-between;
+}
+
+#addBtn {
+  z-index: 1;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }

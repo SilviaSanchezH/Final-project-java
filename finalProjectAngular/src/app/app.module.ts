@@ -18,6 +18,7 @@ import { EditActivityComponent } from './dialogs/edit-activity/edit-activity.com
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { EditContactComponent } from './dialogs/edit-contact/edit-contact.component';
+import { ActivityDetailsComponent } from './dialogs/activity-details/activity-details.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { EditContactComponent } from './dialogs/edit-contact/edit-contact.compon
     ContactListComponent,
     ConfirmationDialogComponent,
     EditActivityComponent,
-    EditContactComponent
+    EditContactComponent,
+    ActivityDetailsComponent
   ],
   imports: [
     BrowserModule,

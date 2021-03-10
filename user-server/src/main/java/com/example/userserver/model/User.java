@@ -1,5 +1,6 @@
 package com.example.userserver.model;
 
+import com.example.userserver.enums.Gender;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.persistence.*;
@@ -15,35 +16,46 @@ public class User {
     private String password;
     private String name;
     private String lastName;
+    private String secondSurname;
     private String phoneNumber;
     private Long center;
-    @OneToOne(mappedBy = "user")
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Role role;
 
-    public User(Long id, String username, String password, String name, String lastName, String phoneNumber, Long center) {
+    public User(Long id, String username, String secondSurname, String password, String name, String lastName, String phoneNumber, Long center, Gender gender) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.lastName = lastName;
+        this.secondSurname = secondSurname;
         this.phoneNumber = phoneNumber;
         this.center = center;
+        this.gender = gender;
     }
 
-    public User(String username, String password, String name, String lastName, String phoneNumber, Long center) {
+
+    public User(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, Gender gender) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.lastName = lastName;
+        this.secondSurname = secondSurname;
         this.phoneNumber = phoneNumber;
         this.center = center;
+        this.gender = gender;
     }
 
-    public User(String username, String name, String lastName, String phoneNumber, Long center) {
+    public User(String username, String name, String lastName, String secondSurname, String phoneNumber, Long center, Gender gender) {
         this.username = username;
         this.name = name;
         this.lastName = lastName;
+        this.secondSurname = secondSurname;
         this.phoneNumber = phoneNumber;
         this.center = center;
+        this.gender = gender;
     }
 
     public User() {
@@ -111,5 +123,21 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 }

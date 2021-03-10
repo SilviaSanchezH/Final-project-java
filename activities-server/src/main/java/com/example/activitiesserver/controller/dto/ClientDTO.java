@@ -6,20 +6,26 @@ public class ClientDTO {
     private String password;
     private String name;
     private String lastName;
+    private String secondSurname;
     private String phoneNumber;
     private Long center;
     private String address;
     private String city;
+    private String gender;
+    private int age;
 
-    public ClientDTO(String username, String password, String name, String lastName, String phoneNumber, Long center, String address, String city) {
+    public ClientDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String address, String city, String gender, int age) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.lastName = lastName;
+        this.secondSurname = secondSurname;
         this.phoneNumber = phoneNumber;
         this.center = center;
         this.address = address;
         this.city = city;
+        this.gender = gender;
+        this.age = age;
     }
 
     public ClientDTO() {
@@ -95,5 +101,21 @@ public class ClientDTO {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

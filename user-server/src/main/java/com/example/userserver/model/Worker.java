@@ -1,5 +1,7 @@
 package com.example.userserver.model;
 
+import com.example.userserver.enums.Gender;
+
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -10,20 +12,21 @@ public class Worker extends User {
     private String occupation;
     private String professionalNumber;
 
-    public Worker(Long id, String username, String password, String name, String lastName, String phoneNumber, String occupation, String professionalNumber, Long center) {
-        super(id, username, password, name, lastName, phoneNumber, center);
+    public Worker(Long id, String username, String password, String name, String lastName, String secondSurname, String phoneNumber, String occupation, String professionalNumber, Long center, Gender gender) {
+        //Long id, String username, String secondSurname, String password, String name, String lastName, String phoneNumber, Long center, Gender gender
+        super(id, username, secondSurname, password, name, lastName, phoneNumber, center, gender);
         this.occupation = occupation;
         this.professionalNumber = professionalNumber;
     }
 
-    public Worker(String username, String password, String name, String lastName, String phoneNumber, String occupation, String professionalNumber, Long center) {
-        super(username, password, name, lastName, phoneNumber, center);
+    public Worker(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, String occupation, String professionalNumber, Long center, Gender gender) {
+        super(username, password, name, lastName, secondSurname, phoneNumber, center, gender);
         this.occupation = occupation;
         this.professionalNumber = professionalNumber;
     }
 
-    public Worker(String username, String name, String lastName, String phoneNumber, String occupation, String professionalNumber, Long center) {
-        super(username, name, lastName, phoneNumber, center);
+    public Worker(String username, String name, String lastName, String secondSurname,  String phoneNumber, String occupation, String professionalNumber, Long center, Gender gender) {
+        super(username, name, lastName, secondSurname, phoneNumber, center, gender);
         this.occupation = occupation;
         this.professionalNumber = professionalNumber;
     }

@@ -2,6 +2,7 @@ package com.example.edgeserver.client;
 
 import com.example.edgeserver.controller.dto.ActivityDTO;
 import com.example.edgeserver.controller.dto.ClientDTO;
+import com.example.edgeserver.controller.dto.UpdateActivityDTO;
 import com.example.edgeserver.controller.dto.WorkerDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@FeignClient(name = "activity-service")
+@FeignClient(name = "activities-service")
 public interface ActivityClient {
     @GetMapping("/activities")
     public List<ActivityDTO> getAllActivities();
@@ -31,7 +32,7 @@ public interface ActivityClient {
     public ActivityDTO addActivity(@RequestBody @Valid ActivityDTO activityDTO);
 
     @PutMapping("/activity/{id}")
-    public ActivityDTO updateActivity(@PathVariable Long id, @Valid @RequestBody ActivityDTO activityDTO);
+    public ActivityDTO updateActivity(@PathVariable Long id, @Valid @RequestBody UpdateActivityDTO activityDTO);
 
     @DeleteMapping("/activity/{id}")
     public void deleteActivity(@PathVariable Long id);

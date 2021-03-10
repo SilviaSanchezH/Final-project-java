@@ -1,6 +1,6 @@
 package com.example.userserver.controller.dto;
 
-public class WorkerDTO {
+public class UpdateClientDTO {
     private Long id;
     private String username;
     private String password;
@@ -9,11 +9,13 @@ public class WorkerDTO {
     private String secondSurname;
     private String phoneNumber;
     private Long center;
+    private String address;
+    private String city;
     private String gender;
-    private String occupation;
-    private String professionalNumber;
+    private int age;
 
-    public WorkerDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String occupation, String professionalNumber, String gender) {
+    public UpdateClientDTO(Long id, String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String address, String city, String gender, int age) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -21,12 +23,13 @@ public class WorkerDTO {
         this.secondSurname = secondSurname;
         this.phoneNumber = phoneNumber;
         this.center = center;
-        this.occupation = occupation;
-        this.professionalNumber = professionalNumber;
+        this.address = address;
+        this.city = city;
         this.gender = gender;
+        this.age = age;
     }
 
-    public WorkerDTO() {
+    public UpdateClientDTO() {
     }
 
     public Long getId() {
@@ -85,20 +88,20 @@ public class WorkerDTO {
         this.center = center;
     }
 
-    public String getOccupation() {
-        return occupation;
+    public String getAddress() {
+        return address;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getProfessionalNumber() {
-        return professionalNumber;
+    public String getCity() {
+        return city;
     }
 
-    public void setProfessionalNumber(String professionalNumber) {
-        this.professionalNumber = professionalNumber;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getGender() {
@@ -109,11 +112,19 @@ public class WorkerDTO {
         this.gender = gender;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getSecondSurname() {
         return secondSurname;
     }
 
-    public void setSecondSurname(String secondSurname) {
-        this.secondSurname = secondSurname;
+    public void setSecondSurname(String secondName) {
+        this.secondSurname = secondName;
     }
 }

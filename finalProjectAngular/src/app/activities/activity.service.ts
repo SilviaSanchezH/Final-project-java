@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { StorageService } from '../auth/storage.service';
 import { Activity } from '../models/activity';
 import { Client } from '../models/client';
+import { Worker } from '../models/worker';
 
 @Injectable({
   providedIn: 'root'
@@ -51,10 +52,10 @@ export class ActivityService {
   }
 
   addWorkerToActivity(activityId: number, workerId: number): Observable<void> {
-    return this.httpClient.post<void>(environment.API_URL + 'activity/' + activityId + '/worker/' + workerId,  {headers: {'Authorization': `Bearer ${this.storageService.getCurrentToken()}`}})
+    return this.httpClient.post<void>(environment.API_URL + 'activity/' + activityId + '/worker/' + workerId, null, {headers: {'Authorization': `Bearer ${this.storageService.getCurrentToken()}`}})
   }
 
   addClientToActivity(activityId: number, clientId: number): Observable<void> {
-    return this.httpClient.post<void>(environment.API_URL + 'activity/' + activityId + '/client/' + clientId,  {headers: {'Authorization': `Bearer ${this.storageService.getCurrentToken()}`}})
+    return this.httpClient.post<void>(environment.API_URL + 'activity/' + activityId + '/client/' + clientId, null, {headers: {'Authorization': `Bearer ${this.storageService.getCurrentToken()}`}})
   }
 }

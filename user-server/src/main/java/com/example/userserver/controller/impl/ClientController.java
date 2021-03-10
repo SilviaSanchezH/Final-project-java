@@ -1,6 +1,7 @@
 package com.example.userserver.controller.impl;
 
 import com.example.userserver.controller.dto.ClientDTO;
+import com.example.userserver.controller.dto.UpdateClientDTO;
 import com.example.userserver.model.Client;
 import com.example.userserver.model.Worker;
 import com.example.userserver.service.ClientService;
@@ -37,7 +38,7 @@ public class ClientController {
 
     @PutMapping("/client/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Client updateClient(@PathVariable Long id, @Valid @RequestBody ClientDTO client){
+    public Client updateClient(@PathVariable Long id, @Valid @RequestBody UpdateClientDTO client){
         client.setId(id);
         return clientService.updateClient(client);
     }
@@ -54,7 +55,7 @@ public class ClientController {
         return clientService.clientsByCenterId(id);
     }
 
-    @GetMapping("/clients/list")
+    @PostMapping("/clients/list")
     @ResponseStatus(HttpStatus.OK)
     public List<Client> clientsList(@RequestBody List<Long> idList) {
         return clientService.getClientsList(idList);

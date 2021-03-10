@@ -1,8 +1,6 @@
 package com.example.edgeserver.client;
 
-import com.example.edgeserver.controller.dto.ClientDTO;
-import com.example.edgeserver.controller.dto.UserDTO;
-import com.example.edgeserver.controller.dto.WorkerDTO;
+import com.example.edgeserver.controller.dto.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +15,9 @@ public interface UserClient {
     @GetMapping("client/{id}")
     public ClientDTO getClient(@PathVariable Long id);
     @PostMapping("/client")
-    public ClientDTO addClient(@Valid @RequestBody ClientDTO client);
+    public ClientDTO addClient(@Valid @RequestBody NewClientDTO client);
     @PutMapping("/client/{id}")
-    public ClientDTO updateClient(@PathVariable Long id, @Valid @RequestBody ClientDTO client);
+    public ClientDTO updateClient(@PathVariable Long id, @Valid @RequestBody UpdateClientDTO client);
     @DeleteMapping("/client/{id}")
     public void deleteClient(@PathVariable Long id);
     @GetMapping("/clients/center/{id}")
@@ -33,9 +31,9 @@ public interface UserClient {
     @GetMapping("worker/{id}")
     public WorkerDTO getWorker(@PathVariable Long id);
     @PostMapping("/worker")
-    public WorkerDTO addWorker(@RequestBody @Valid WorkerDTO worker);
+    public WorkerDTO addWorker(@RequestBody @Valid NewWorkerDTO worker);
     @PutMapping("/worker/{id}")
-    public WorkerDTO updateWorker(@PathVariable Long id, @Valid @RequestBody WorkerDTO worker);
+    public WorkerDTO updateWorker(@PathVariable Long id, @Valid @RequestBody UpdateWorkerDTO worker);
     @DeleteMapping("/worker/{id}")
     public void deleteWorker(@PathVariable Long id);
     @GetMapping("/workers/center/{id}")

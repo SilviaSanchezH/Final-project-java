@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ActivityService {
@@ -31,16 +32,36 @@ public class ActivityService {
     @Autowired
     private UserClient userClient;
 
-    public List<Activity> getAllActivities() {
-        return activityRepository.findAll();
+    public List<ActivityDTO> getAllActivities() {
+        List<Activity> activities = activityRepository.findAll();
+        List<ActivityDTO> activityDTOList = new ArrayList<ActivityDTO>();
+        for(Activity activity: activities) {
+            List<Long> clients = activity.getClients().stream().map(Client::getClientId).collect(Collectors.toList());
+            List<Long> workers = activity.getWorkers().stream().map(Worker::getWorkerId).collect(Collectors.toList());
+            activityDTOList.add(new ActivityDTO(activity.getId(), activity.getTitle(), activity.getDescription(), activity.getType().toString(),
+                    activity.getDate(), activity.getTime(), activity.getCenter(), clients, workers));
+        }
+        return activityDTOList;
     }
 
-    public List<Activity> getActivitiesByCenter(Long centerId) {
-        return activityRepository.findActivitiesByCenter(centerId);
+    public List<ActivityDTO> getActivitiesByCenter(Long centerId) {
+        List<Activity> activities = activityRepository.findActivitiesByCenter(centerId);
+        List<ActivityDTO> activityDTOList = new ArrayList<ActivityDTO>();
+        for(Activity activity: activities) {
+            List<Long> clients = activity.getClients().stream().map(Client::getClientId).collect(Collectors.toList());
+            List<Long> workers = activity.getWorkers().stream().map(Worker::getWorkerId).collect(Collectors.toList());
+            activityDTOList.add(new ActivityDTO(activity.getId(), activity.getTitle(), activity.getDescription(), activity.getType().toString(),
+                    activity.getDate(), activity.getTime(), activity.getCenter(), clients, workers));
+        }
+        return activityDTOList;
     }
 
-    public Activity getActivity(Long id) {
-        return activityRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
+    public ActivityDTO getActivity(Long id) {
+        Activity activity = activityRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
+        List<Long> clients = activity.getClients().stream().map(Client::getClientId).collect(Collectors.toList());
+        List<Long> workers = activity.getWorkers().stream().map(Worker::getWorkerId).collect(Collectors.toList());
+        return new ActivityDTO(activity.getId(), activity.getTitle(), activity.getDescription(), activity.getType().toString(),
+                activity.getDate(), activity.getTime(), activity.getCenter(), clients, workers);
     }
 
     public List<WorkerDTO> getWorkersByActivity(Long id) {
@@ -73,14 +94,17 @@ public class ActivityService {
         }
     }
 
-    public Activity updateActivity(ActivityDTO activityDTO) {
+    public ActivityDTO updateActivity(ActivityDTO activityDTO) {
         try {
-            activityRepository.findById(activityDTO.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
+            Activity activity = activityRepository.findById(activityDTO.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
             CenterDTO center = centerClient.getCenter(activityDTO.getCenter());
             if (center == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not valid center id");
-            Activity activity = new Activity(activityDTO.getTitle(), activityDTO.getDescription(), ActivityType.valueOf(activityDTO.getType().toUpperCase()), activityDTO.getDate(), activityDTO.getTime(),
+            Activity updatedActivity = new Activity(activityDTO.getId(), activityDTO.getTitle(), activityDTO.getDescription(), ActivityType.valueOf(activityDTO.getType().toUpperCase()), activityDTO.getDate(), activityDTO.getTime(),
                     activityDTO.getCenter());
-            return activityRepository.save(activity);
+            updatedActivity.setWorkers(activity.getWorkers());
+            updatedActivity.setClients(activity.getClients());
+            activityRepository.save(updatedActivity);
+            return activityDTO;
         }catch (ResponseStatusException exception) {
             throw exception;
         }
@@ -94,7 +118,9 @@ public class ActivityService {
     public void addWorkerToActivity(Long activityId, Long workerId){
        Activity activity = activityRepository.findById(activityId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
        List<Worker> workerList = activity.getWorkers();
-       workerList.add(new Worker(workerId, activity));
+       List<Activity> activities = new ArrayList<>();
+       activities.add(activity);
+       workerList.add(new Worker(workerId, activities));
        activity.setWorkers(workerList);
        activityRepository.save(activity);
     }
@@ -102,7 +128,9 @@ public class ActivityService {
     public void addClientToActivity(Long activityId, Long clientId){
         Activity activity = activityRepository.findById(activityId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity for that id doesn't exist"));
         List<Client> clientList = activity.getClients();
-        clientList.add(new Client(clientId, activity));
+        List<Activity> activities = new ArrayList<>();
+        activities.add(activity);
+        clientList.add(new Client(clientId, activities));
         activity.setClients(clientList);
         activityRepository.save(activity);
     }

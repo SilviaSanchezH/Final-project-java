@@ -1,15 +1,10 @@
-<div class="add" *ngIf="loggedUser?.role !=='WORKER'">
-  <button mat-button (click)="addActivity()">Añadir</button>
-</div>
 
-<div class="activities-container">
-
-
+<div class="activities-container"> 
   <mat-card class="activity-card" *ngFor="let activity of activitiesList">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{activity.title}}</mat-card-title>
-      <mat-card-subtitle>{{getTypeViewValue(activity.type)}} - {{center.name}}</mat-card-subtitle>
+      <mat-card-title (click)="openActivity(activity)">{{activity.title}}</mat-card-title>
+      <mat-card-subtitle>{{getTypeViewValue(activity.type)}} - {{center?.name}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]="getImageByType(activity.type)">
     <mat-card-content>
@@ -24,8 +19,8 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="actions">
-        <button mat-button (click)="goToActivity(activity)">¡ME APUNTO!</button>
-        <div class="worker-buttons" *ngIf="loggedUser?.role !== 'WORKER'">
+        <button mat-button (click)="goToActivity(activity)" [disabled]="disableGoToActivity(activity)">{{disableGoToActivity(activity) ? 'YA ESTOY APUNTADO' :'¡ME APUNTO!'}}</button>
+        <div class="worker-buttons" *ngIf="loggedUser?.role === 'WORKER'">
           <button mat-button (click)="editActivity(activity)">Editar</button>
           <button mat-button (click)="deleteActivity(activity)">Eliminar</button>
         </div>
@@ -34,3 +29,6 @@
   </mat-card>
 </div>
 
+<button mat-fab aria-label="Nueva actividad" matTooltip="Añadir actividad" id="addBtn" mat-button (click)="addActivity()" *ngIf="loggedUser?.role ==='WORKER'">
+  <mat-icon>add</mat-icon>
+</button>

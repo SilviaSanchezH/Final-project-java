@@ -4,5 +4,4 @@ export class Center {
   address: string;
   city: string;
   phoneNumber: string;
-  workers: number[];
 }

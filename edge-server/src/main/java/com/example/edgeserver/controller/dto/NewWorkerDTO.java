@@ -1,7 +1,6 @@
-package com.example.userserver.controller.dto;
+package com.example.edgeserver.controller.dto;
 
-public class WorkerDTO {
-    private Long id;
+public class NewWorkerDTO {
     private String username;
     private String password;
     private String name;
@@ -9,11 +8,11 @@ public class WorkerDTO {
     private String secondSurname;
     private String phoneNumber;
     private Long center;
-    private String gender;
     private String occupation;
     private String professionalNumber;
+    private String gender;
 
-    public WorkerDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String occupation, String professionalNumber, String gender) {
+    public NewWorkerDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String occupation, String professionalNumber, String gender) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -26,15 +25,7 @@ public class WorkerDTO {
         this.gender = gender;
     }
 
-    public WorkerDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public NewWorkerDTO() {
     }
 
     public String getUsername() {
@@ -67,6 +58,14 @@ public class WorkerDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 
     public String getPhoneNumber() {
@@ -107,13 +106,5 @@ public class WorkerDTO {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getSecondSurname() {
-        return secondSurname;
-    }
-
-    public void setSecondSurname(String secondSurname) {
-        this.secondSurname = secondSurname;
     }
 }

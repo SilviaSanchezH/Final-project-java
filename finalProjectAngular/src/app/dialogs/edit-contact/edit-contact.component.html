@@ -29,14 +29,51 @@
             <mat-error *ngIf="name.hasError('required')">
                 El nombre es necesario
             </mat-error>
+            <mat-error *ngIf="name.hasError('invalidname')">
+                El nombre no puede tener dígitos.
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Apellido</mat-label>
-            <input matInput [formControl]="lastname" type="text" formControlName="lastname"
-                [class.is-invalid]="lastname.invalid && lastname.touched">
-            <mat-error *ngIf="lastname.hasError('required')">
+            <mat-label>Primer Apellido</mat-label>
+            <input matInput [formControl]="lastName" type="text" formControlName="lastName"
+                [class.is-invalid]="lastName.invalid && lastName.touched">
+            <mat-error *ngIf="lastName.hasError('required')">
                 El apellido es necesario
+            </mat-error>
+            <mat-error *ngIf="lastName.hasError('invalidname')">
+                El apellido no puede tener dígitos.
+            </mat-error>
+        </mat-form-field>
+
+        
+        <mat-form-field>
+            <mat-label>Segundo Apellido</mat-label>
+            <input matInput [formControl]="secondSurname" type="text" formControlName="secondSurname">
+            <mat-error *ngIf="secondSurname.hasError('invalidname')">
+                El apellido no puede tener dígitos.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="selectedType === 'CLIENT'">
+            <mat-label>Edad</mat-label>
+            <input matInput [formControl]="age" type="text" formControlName="age"
+                [class.is-invalid]="age.invalid && age.touched">
+            <mat-error *ngIf="age.hasError('required')">
+                La edad es necesaria
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Género</mat-label>
+            <mat-select [(ngModel)]="selectedGender" name="gender" formControlName="gender"
+                [class.is-invalid]="gender.invalid && gender.touched">
+                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                    {{gender.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="gender.hasError('required')">
+                El género es necesario
             </mat-error>
         </mat-form-field>
 
@@ -46,6 +83,9 @@
                 [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched">
             <mat-error *ngIf="phoneNumber.hasError('required')">
                 El teléfono es necesario
+            </mat-error>
+            <mat-error *ngIf="username.hasError('invalidphone')">
+                El formato es invalido
             </mat-error>
         </mat-form-field>
 

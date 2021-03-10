@@ -6,13 +6,21 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{getFullName(contact.name, contact.lastname)}}
-              <div class="avatar">
-                <img [src]="getRandomAvatar(contact.id+contact.phoneNumber)" alt="">
+              {{getFullName(contact.name, contact.lastName)}}
+              <div class="avatar" *ngIf="contact.gender === 'MALE'">
+                <img [src]="getMaleAvatar(contact.id+contact.phoneNumber)" alt="">
+              </div>
+              <div class="avatar" *ngIf="contact.gender === 'FEMALE'">
+                <img [src]="getFemaleAvatar(contact.id+contact.phoneNumber)" alt="">
               </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list>
+            <mat-list-item> Nombre: {{contact.name}} </mat-list-item>
+            <mat-list-item> Primer apellido: {{contact.lastName}} </mat-list-item>
+            <mat-list-item> Segundo apellido: {{contact.secondSurname}} </mat-list-item>
+            <mat-list-item> Edad: {{contact.age}} </mat-list-item>
+            <mat-list-item> Género: {{getGenderViewValue(contact.gender)}} </mat-list-item>
             <mat-list-item> Teléfono: {{contact.phoneNumber}} </mat-list-item>
             <mat-list-item> Centro: {{center?.name}} </mat-list-item>
             <mat-list-item> Dirección: {{contact.address}} </mat-list-item>
@@ -20,7 +28,7 @@
           </mat-list>
 
           <div class="actions">
-            <div class="worker-buttons" *ngIf="loggedUser?.role !== 'WORKER'">
+            <div class="worker-buttons" *ngIf="loggedUser?.role === 'WORKER'">
               <button mat-button (click)="editClient(contact)">Editar</button>
               <button mat-button (click)="deleteClient(contact)">Eliminar</button>
             </div>
@@ -37,13 +45,20 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{getFullName(worker.name, worker.lastname)}}
-              <div class="avatar">
-                <img [src]="getRandomAvatar(worker.id+worker.phoneNumber)" alt="">
+              {{getFullName(worker.name, worker.lastName)}}
+              <div class="avatar" *ngIf="worker.gender === 'MALE'">
+                <img [src]="getMaleAvatar(worker.id+worker.phoneNumber)" alt="">
+              </div>
+              <div class="avatar" *ngIf="worker.gender === 'FEMALE'">
+                <img [src]="getFemaleAvatar(worker.id+worker.phoneNumber)" alt="">
               </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list>
+            <mat-list-item> Nombre: {{worker.name}} </mat-list-item>
+            <mat-list-item> Primer apellido: {{worker.lastName}} </mat-list-item>
+            <mat-list-item> Segundo apellido: {{worker.secondSurname}} </mat-list-item>
+            <mat-list-item> Género: {{getGenderViewValue(worker.gender)}} </mat-list-item>
             <mat-list-item> Teléfono: {{worker.phoneNumber}} </mat-list-item>
             <mat-list-item> Centro: {{center?.name}} </mat-list-item>
             <mat-list-item> Puesto: {{worker.occupation}} </mat-list-item>
@@ -51,7 +66,7 @@
           </mat-list>
 
           <div class="actions">
-            <div class="worker-buttons" *ngIf="loggedUser?.role !== 'WORKER'">
+            <div class="worker-buttons" *ngIf="loggedUser?.role === 'WORKER'">
               <button mat-button (click)="editWorker(worker)">Editar</button>
               <button mat-button (click)="deleteWorker(worker)">Eliminar</button>
             </div>
@@ -62,7 +77,7 @@
   </div>
 </div>
 
-<button mat-fab aria-label="Nuevo usuario" matTooltip="Añadir usuario" id="addBtn" [matMenuTriggerFor]="beforeMenu">
+<button mat-fab aria-label="Nuevo usuario" matTooltip="Añadir usuario" id="addBtn" [matMenuTriggerFor]="beforeMenu" *ngIf="loggedUser?.role === 'WORKER'">
   <mat-menu #beforeMenu="matMenu" xPosition="before">
     <button mat-menu-item (click)="addClient()">Añadir usuario</button>
     <button mat-menu-item (click)="addWorker()">Añadir profesional</button>

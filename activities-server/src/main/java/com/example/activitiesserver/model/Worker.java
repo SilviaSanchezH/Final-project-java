@@ -2,21 +2,18 @@ package com.example.activitiesserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Worker {
     @Id
     private long workerId;
-    @ManyToOne
-    @JoinColumn(name = "activity_id")
+    @ManyToMany(mappedBy = "workers", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Activity activity;
+    private List<Activity> activity;
 
-    public Worker(long workerId, Activity activity) {
+    public Worker(long workerId, List<Activity> activity) {
         this.workerId = workerId;
         this.activity = activity;
     }
@@ -32,11 +29,11 @@ public class Worker {
         this.workerId = workerId;
     }
 
-    public Activity getActivity() {
+    public List<Activity> getActivity() {
         return activity;
     }
 
-    public void setActivity(Activity activity) {
+    public void setActivity(List<Activity> activity) {
         this.activity = activity;
     }
 }

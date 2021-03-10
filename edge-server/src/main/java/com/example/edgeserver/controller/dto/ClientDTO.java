@@ -6,13 +6,16 @@ public class ClientDTO {
     private String password;
     private String name;
     private String lastName;
+    private String secondSurname;
     private String phoneNumber;
     private Long center;
     private String address;
     private String city;
     private Role role;
+    private String gender;
+    private int age;
 
-    public ClientDTO(String username, String password, String name, String lastName, String phoneNumber, Long center, String address, String city, Role role) {
+    public ClientDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String address, String city, Role role, String gender, int age) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -22,6 +25,38 @@ public class ClientDTO {
         this.address = address;
         this.city = city;
         this.role = role;
+        this.gender = gender;
+        this.age = age;
+        this.secondSurname = secondSurname;
+    }
+
+    public ClientDTO(Long id, String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String address, String city, String gender, int age) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.secondSurname = secondSurname;
+        this.phoneNumber = phoneNumber;
+        this.center = center;
+        this.address = address;
+        this.city = city;
+        this.gender = gender;
+        this.age = age;
+    }
+
+    public ClientDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String address, String city, String gender, int age) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.secondSurname = secondSurname;
+        this.phoneNumber = phoneNumber;
+        this.center = center;
+        this.address = address;
+        this.city = city;
+        this.gender = gender;
+        this.age = age;
     }
 
     public ClientDTO() {
@@ -105,5 +140,29 @@ public class ClientDTO {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondName) {
+        this.secondSurname = secondName;
     }
 }

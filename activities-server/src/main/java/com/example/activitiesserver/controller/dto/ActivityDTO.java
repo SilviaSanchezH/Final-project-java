@@ -19,14 +19,12 @@ public class ActivityDTO {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
-    @JsonSerialize(using = LocalTimeSerializer.class)
-    private LocalTime time;
+    private String time;
     private Long center;
     private List<Long> users;
     private List<Long> workers;
 
-    public ActivityDTO(String title, String description, String type, LocalDate date, LocalTime time, Long center, List<Long> users, List<Long> workers) {
+    public ActivityDTO(String title, String description, String type, LocalDate date, String time, Long center, List<Long> users, List<Long> workers) {
         this.title = title;
         this.description = description;
         this.type = type;
@@ -38,6 +36,18 @@ public class ActivityDTO {
     }
 
     public ActivityDTO() {
+    }
+
+    public ActivityDTO(Long id, String title, String description, String type, LocalDate date, String time, Long center, List<Long> users, List<Long> workers) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.type = type;
+        this.date = date;
+        this.time = time;
+        this.center = center;
+        this.users = users;
+        this.workers = workers;
     }
 
     public Long getId() {
@@ -80,11 +90,11 @@ public class ActivityDTO {
         this.date = date;
     }
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

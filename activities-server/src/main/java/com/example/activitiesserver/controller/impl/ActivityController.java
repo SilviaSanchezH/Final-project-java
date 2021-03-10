@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ActivityController {
 
     @Autowired
@@ -20,19 +21,19 @@ public class ActivityController {
 
     @GetMapping("/activities")
     @ResponseStatus(HttpStatus.OK)
-    public List<Activity> getAllActivities() {
+    public List<ActivityDTO> getAllActivities() {
         return activityService.getAllActivities();
     }
 
     @GetMapping("/activity/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Activity getActivity(@PathVariable Long id) {
+    public ActivityDTO getActivity(@PathVariable Long id) {
         return activityService.getActivity(id);
     }
 
     @GetMapping("/activities/center/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Activity> getActivitiesByCenter(@PathVariable Long id) {
+    public List<ActivityDTO> getActivitiesByCenter(@PathVariable Long id) {
         return activityService.getActivitiesByCenter(id);
     }
 
@@ -68,7 +69,7 @@ public class ActivityController {
 
     @PutMapping("/activity/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Activity updateActivity(@PathVariable Long id, @Valid @RequestBody ActivityDTO activityDTO) {
+    public ActivityDTO updateActivity(@PathVariable Long id, @Valid @RequestBody ActivityDTO activityDTO) {
         activityDTO.setId(id);
         return activityService.updateActivity(activityDTO);
     }

@@ -7,8 +7,8 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
 
 const routes: Routes = [
   {path: '', redirectTo: 'activities', pathMatch: "full"},
-  {path: 'activities', component: ActivityListComponent, canActivate: []},
-  {path: 'contacts', component: ContactListComponent, canActivate: []},
+  {path: 'activities', component: ActivityListComponent, canActivate: [AuthGuard]},
+  {path: 'contacts', component: ContactListComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
 ];
 

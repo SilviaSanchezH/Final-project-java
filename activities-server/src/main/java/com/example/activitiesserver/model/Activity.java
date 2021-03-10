@@ -8,6 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import org.apache.catalina.User;
+import org.hibernate.jdbc.Work;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,18 +29,36 @@ public class Activity {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
-    @JsonSerialize(using = LocalTimeSerializer.class)
-    private LocalTime time;
+    private String time;
     private Long center;
 
-    @OneToMany(mappedBy = "activity")
+    @JoinTable(
+            name = "activities_clients",
+            joinColumns = @JoinColumn(name = "activity_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="client_id", nullable = false)
+    )
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Client> clients;
 
-    @OneToMany(mappedBy = "activity")
+    @JoinTable(
+            name = "activities_workers",
+            joinColumns = @JoinColumn(name = "activity_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="worker_id", nullable = false)
+    )
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Worker> workers;
 
-    public Activity(String title, String description, ActivityType type, LocalDate date, LocalTime time, Long center) {
+    public Activity(String title, String description, ActivityType type, LocalDate date, String time, Long center) {
+        this.title = title;
+        this.description = description;
+        this.type = type;
+        this.date = date;
+        this.time = time;
+        this.center = center;
+    }
+
+    public Activity(Long id, String title, String description, ActivityType type, LocalDate date, String time, Long center) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.type = type;
@@ -91,11 +110,11 @@ public class Activity {
         this.date = date;
     }
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

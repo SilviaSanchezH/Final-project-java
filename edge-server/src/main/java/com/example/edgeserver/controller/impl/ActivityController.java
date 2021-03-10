@@ -2,6 +2,7 @@ package com.example.edgeserver.controller.impl;
 
 import com.example.edgeserver.controller.dto.ActivityDTO;
 import com.example.edgeserver.controller.dto.ClientDTO;
+import com.example.edgeserver.controller.dto.UpdateActivityDTO;
 import com.example.edgeserver.controller.dto.WorkerDTO;
 import com.example.edgeserver.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class ActivityController {
 
     @PutMapping("/activity/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ActivityDTO updateActivity(@PathVariable Long id, @Valid @RequestBody ActivityDTO activityDTO) {
+    public ActivityDTO updateActivity(@PathVariable Long id, @Valid @RequestBody UpdateActivityDTO activityDTO) {
         activityDTO.setId(id);
         return activityService.updateActivity(id, activityDTO);
     }
