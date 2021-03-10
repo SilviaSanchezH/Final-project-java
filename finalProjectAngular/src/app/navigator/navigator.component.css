@@ -4,16 +4,20 @@
   align-items: center;
   background-color: aqua;
   width: 100vw;
+  height: 80px;
   padding: 0;
 }
 
 .navigator div{
   margin: 20px;
   cursor: pointer;
-  height: fit-content;
 }
 
 .logout {
   margin-right: 10px !important;
   margin-left: auto !important;
+}
+
+mat-expansion-panel {
+  z-index: 10;
 }

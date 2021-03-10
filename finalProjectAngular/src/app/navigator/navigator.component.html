@@ -8,6 +8,16 @@
   <div class="contacts" routerLink="/contacts">
     <h2>Contactos</h2>
   </div>
+  <div class="center">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{center?.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel>
+  </div>
   <div class="logout"><app-logout></app-logout></div>
   
 </div>
