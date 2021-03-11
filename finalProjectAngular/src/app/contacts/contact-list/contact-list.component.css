@@ -20,6 +20,7 @@
 
 mat-expansion-panel {
     max-width: 400px !important;
+    width: 350px;
     margin: 15px;
 }
 
@@ -29,6 +30,15 @@ mat-expansion-panel-header {
 
 mat-panel-title {
     align-items: center !important;
+    font-family: 'Dosis', sans-serif;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+mat-list-item{
+    font-family: 'Dosis', sans-serif !important;
+    font-size: 24px;
 }
 
 .avatar > img{
@@ -46,4 +56,18 @@ h2 {
     position: fixed;
     bottom: 20px;
     right: 20px;
+}
+
+::ng-deep .mat-menu-no-scroll {
+    overflow: hidden !important;
+}
+
+button{
+    font-family: 'Dosis', sans-serif;
+    font-size: 17px !important;
+    margin: 10px;
+}
+
+#editBtn {
+    background-color: gainsboro;
 }

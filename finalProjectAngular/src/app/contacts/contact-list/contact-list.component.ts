@@ -187,7 +187,7 @@ export class ContactListComponent implements OnInit {
 
   addClient() {
     const dialogRef = this.dialog.open(EditContactComponent, {
-      width: '600px',
+      width: '800px',
       data: { title: 'Nuevo usuario', body: new Client() },
       disableClose: true
     });
@@ -200,7 +200,7 @@ export class ContactListComponent implements OnInit {
 
   editClient(client: Client) {
     const dialogRef = this.dialog.open(EditContactComponent, {
-      width: '600px',
+      width: '800px',
       data: { title: 'Editar a' + ' ' + client.name + ' ' + client.lastName, body: new Client(client) },
       disableClose: true
     });
@@ -232,7 +232,7 @@ export class ContactListComponent implements OnInit {
 
   addWorker() {
     const dialogRef = this.dialog.open(EditContactComponent, {
-      width: '600px',
+      width: '800px',
       data: { title: 'Nuevo profesional', body: new Worker() },
       disableClose: true
     });
@@ -245,7 +245,7 @@ export class ContactListComponent implements OnInit {
 
   editWorker(worker: Worker) {
     const dialogRef = this.dialog.open(EditContactComponent, {
-      width: '600px',
+      width: '800px',
       data: { title: 'Editar ' + worker.name + worker.lastName, body: new Worker(worker) },
       disableClose: true
     });
@@ -276,9 +276,10 @@ export class ContactListComponent implements OnInit {
   }
 
   getFullName(name: string, lastName: string): string {
+    const maxLength = 19;
     const nameLength = name?.length;
-    let displayName = name?.slice(0, 20) + " " + lastName?.slice(0, 20 - (nameLength + lastName?.length));
-    return nameLength + lastName?.length > 20 ? displayName + "..." : displayName;
+    let displayName = (nameLength > maxLength ? name?.slice(0, maxLength) : name) + " " + lastName?.slice(0, maxLength - (nameLength > maxLength ? maxLength: nameLength));
+    return nameLength + lastName?.length > maxLength ? displayName + "..." : displayName;
   }
 
   getFemaleAvatar(seed: string): string {

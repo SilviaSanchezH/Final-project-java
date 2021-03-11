@@ -8,11 +8,11 @@
 }
 
 body {
-  background: #eeeeee;
+  background: #E5ECF4  ;
 }
 
 h2 {
-  font-family: 'Roboto Mono', monospace !important;
+  font-family: 'Dosis', sans-serif;
 }
 
 .timepicker-overlay {
@@ -21,4 +21,14 @@ h2 {
 
 .timepicker-backdrop-overlay {
   z-index: 1100 !important;
+}
+
+.mat-dialog-title{
+  font-size: 30px !important;
+  font-family: 'Dosis', sans-serif !important;
+  font-weight: bold !important;
+}
+
+.mat-dialog-content * {
+ /*  font-family: 'Dosis', sans-serif !important; */
 }

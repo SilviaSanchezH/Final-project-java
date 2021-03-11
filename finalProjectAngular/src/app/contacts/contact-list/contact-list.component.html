@@ -29,8 +29,8 @@
 
           <div class="actions">
             <div class="worker-buttons" *ngIf="loggedUser?.role === 'WORKER'">
-              <button mat-button (click)="editClient(contact)">Editar</button>
-              <button mat-button (click)="deleteClient(contact)">Eliminar</button>
+              <button mat-raised-button (click)="editClient(contact)" id="editBtn">Editar</button>
+              <button mat-raised-button color="warn" (click)="deleteClient(contact)">Eliminar</button>
             </div>
           </div>
         </mat-expansion-panel>
@@ -67,8 +67,8 @@
 
           <div class="actions">
             <div class="worker-buttons" *ngIf="loggedUser?.role === 'WORKER'">
-              <button mat-button (click)="editWorker(worker)">Editar</button>
-              <button mat-button (click)="deleteWorker(worker)">Eliminar</button>
+              <button mat-raised-button (click)="editWorker(worker)" id="editBtn">Editar</button>
+              <button mat-raised-button color="warn" (click)="deleteWorker(worker)">Eliminar</button>
             </div>
           </div>
         </mat-expansion-panel>
@@ -78,7 +78,7 @@
 </div>
 
 <button mat-fab aria-label="Nuevo usuario" matTooltip="Añadir usuario" id="addBtn" [matMenuTriggerFor]="beforeMenu" *ngIf="loggedUser?.role === 'WORKER'">
-  <mat-menu #beforeMenu="matMenu" xPosition="before">
+  <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu-no-scroll">
     <button mat-menu-item (click)="addClient()">Añadir usuario</button>
     <button mat-menu-item (click)="addWorker()">Añadir profesional</button>
   </mat-menu>

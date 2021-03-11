@@ -1,22 +1,29 @@
+
 <div class="navigator" *ngIf="isAuthenticated()">
-  <div class="home" routerLink="/">
-    <h1>Baila</h1>
-  </div>
-  <div class="activities" routerLink="/activities">
-    <h2>Actividades</h2>
-  </div>
-  <div class="contacts" routerLink="/contacts">
-    <h2>Contactos</h2>
+  <div class="left">
+    <div class="home" routerLink="/">
+      <h1>Senior planning</h1>
+    </div>
+    <div class="activities" routerLink="/activities">
+      <h2>Actividades</h2>
+    </div>
+    <div class="contacts" routerLink="/contacts">
+      <h2>Contactos</h2>
+    </div>
   </div>
   <div class="center">
-    <mat-expansion-panel>
+    <mat-accordion>
+    <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{center?.name}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
+      <p class="infoCenter">Teléfono: {{center?.phoneNumber}}</p>
+      <p class="infoCenter">Dirección: {{center?.address}}</p>
+      <p class="infoCenter">Ciudad: {{center?.city}}</p>
     </mat-expansion-panel>
+  </mat-accordion>
   </div>
   <div class="logout"><app-logout></app-logout></div>
   

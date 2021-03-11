@@ -1,28 +1,30 @@
 
-<div class="activities-container"> 
+<div class="activities-container">  
   <mat-card class="activity-card" *ngFor="let activity of activitiesList">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title (click)="openActivity(activity)">{{activity.title}}</mat-card-title>
       <mat-card-subtitle>{{getTypeViewValue(activity.type)}} - {{center?.name}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="getImageByType(activity.type)">
+      <img mat-card-image [src]="getImageByType(activity.type)">
     <mat-card-content>
       <div class="description">
         <p>{{activity.description}}</p>
       </div>
       <div class="date">
-        <p>{{activity.date}}</p>
-        <p>{{activity.time}}</p>
+        <p>Fecha: {{activity.date}}</p>
+        <p>Hora: {{activity.time}}</p>
       </div>
-
     </mat-card-content>
     <mat-card-actions>
       <div class="actions">
-        <button mat-button (click)="goToActivity(activity)" [disabled]="disableGoToActivity(activity)">{{disableGoToActivity(activity) ? 'YA ESTOY APUNTADO' :'¡ME APUNTO!'}}</button>
+        <button  mat-raised-button color="accent" (click)="goToActivity(activity)" [disabled]="disableGoToActivity(activity)">{{disableGoToActivity(activity) ? 'YA ESTOY APUNTADO' :'¡ME APUNTO!'}}</button>
         <div class="worker-buttons" *ngIf="loggedUser?.role === 'WORKER'">
-          <button mat-button (click)="editActivity(activity)">Editar</button>
-          <button mat-button (click)="deleteActivity(activity)">Eliminar</button>
+          <button  mat-raised-button (click)="editActivity(activity)" id="editBtn">Editar
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button  mat-raised-button color="warn" (click)="deleteActivity(activity)">Eliminar
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
     </mat-card-actions>

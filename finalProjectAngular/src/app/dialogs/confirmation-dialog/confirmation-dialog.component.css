@@ -1,0 +1,15 @@
+.mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mat-dialog-content * {
+    font-family: 'Dosis', sans-serif !important;
+}
+
+.mat-dialog-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}

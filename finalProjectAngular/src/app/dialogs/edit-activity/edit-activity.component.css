@@ -5,3 +5,17 @@
 ngx-material-timepicker-content {
     z-index: 10;
 }
+
+mat-form-field {
+    margin: 10px;
+}
+
+.mat-dialog-content form {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}

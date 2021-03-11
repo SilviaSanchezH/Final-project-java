@@ -233,11 +233,11 @@ export class ActivityListComponent implements OnInit {
   getImageByType(value: string): string {
     switch(value) {
       case 'LOCAL_TOUR':
-        return "../../../assets/activity-types/trip.png";
+        return "../../../assets/activity-types/busbien.png";
       case 'INSIDE':
-        return "../../../assets/activity-types/trip.png";
+        return "../../../assets/activity-types/descarga.jpg";
       case 'TRIP':
-        return "../../../assets/activity-types/trip.png";
+        return "../../../assets/activity-types/bien.png";
       default:
         return "../../../assets/activity-types/trip.png";
     }

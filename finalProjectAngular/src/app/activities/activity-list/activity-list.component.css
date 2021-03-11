@@ -1,3 +1,6 @@
+
+
+
 mat-card-title {
   cursor: pointer;
 }
@@ -17,6 +20,30 @@ mat-card-title:hover {
 .activity-card {
   max-width: 500px;
   margin: 15px;
+  font-family: 'Dosis', sans-serif;
+  font-size: 30px !important;
+}
+
+mat-card-content{
+  font-family: 'Dosis', sans-serif;
+  font-size: 15px !important;
+}
+
+button{
+  font-family: 'Dosis', sans-serif;
+  font-size: 17px !important;
+}
+
+mat-card-title{
+  font-family: 'Dosis', sans-serif;
+  font-size: 24px !important;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.mat-card-image{
+height: 250px;
+width: 500px;
 }
 
 .actions {
@@ -27,6 +54,10 @@ mat-card-title:hover {
 #addBtn {
   z-index: 1;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
+}
+
+#editBtn {
+  background-color: gainsboro;
 }

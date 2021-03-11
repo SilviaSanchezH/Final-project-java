@@ -1,12 +1,30 @@
 .navigator{
+  background-color:#ee8f98f1;
+  width: 100vw;
+  height: 80px;
+  display: flex;
+}
+
+.home{
+  font-family: 'Alegreya', serif;
+}
+
+.left{
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: aqua;
-  width: 100vw;
-  height: 80px;
-  padding: 0;
 }
+
+.center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.container-image{
+  max-width: 250px;
+  max-height: 250px;
+}
+
 
 .navigator div{
   margin: 20px;
@@ -20,4 +38,23 @@
 
 mat-expansion-panel {
   z-index: 10;
+  background-color: #fce38a;
 }
+
+mat-expansion-panel-header {
+  font-family: 'Dosis', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.activities{
+  font-family: 'Alegreya', serif;
+}
+
+.infoCenter{
+  font-family: 'Dosis', sans-serif;
+
+}
+
+
+

@@ -3,6 +3,6 @@
     <p>{{data.body}}</p>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancelar</button>
-    <button mat-button [mat-dialog-close]="1">OK</button>
+    <button mat-stroked-button color="basic" (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="1">Eliminar</button>
 </div>

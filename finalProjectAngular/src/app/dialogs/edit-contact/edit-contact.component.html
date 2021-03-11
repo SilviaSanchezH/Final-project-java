@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{data.title}}</h1>
 <div mat-dialog-content>
     <form (ngSubmit)="submit()" [formGroup]="contactForm">
-        <mat-form-field *ngIf="!this.data.body || !this.data.body.id">
+        <mat-form-field *ngIf="!this.data.body || !this.data.body.id" appearance="fill">
             <mat-label>Username</mat-label>
             <input matInput [formControl]="username" type="text" formControlName="username"
                 [class.is-invalid]="username.invalid && username.touched">
@@ -10,7 +10,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field *ngIf="!this.data.body || !this.data.body.id">
+        <mat-form-field *ngIf="!this.data.body || !this.data.body.id" appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input matInput [formControl]="password" type="password" formControlName="password"
                 [class.is-invalid]="password.invalid && password.touched">
@@ -22,7 +22,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Nombre</mat-label>
             <input matInput [formControl]="name" type="text" formControlName="name"
                 [class.is-invalid]="name.invalid && name.touched">
@@ -34,7 +34,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Primer Apellido</mat-label>
             <input matInput [formControl]="lastName" type="text" formControlName="lastName"
                 [class.is-invalid]="lastName.invalid && lastName.touched">
@@ -47,7 +47,7 @@
         </mat-form-field>
 
         
-        <mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Segundo Apellido</mat-label>
             <input matInput [formControl]="secondSurname" type="text" formControlName="secondSurname">
             <mat-error *ngIf="secondSurname.hasError('invalidname')">
@@ -55,7 +55,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field *ngIf="selectedType === 'CLIENT'">
+        <mat-form-field *ngIf="selectedType === 'CLIENT'" appearance="fill">
             <mat-label>Edad</mat-label>
             <input matInput [formControl]="age" type="text" formControlName="age"
                 [class.is-invalid]="age.invalid && age.touched">
@@ -77,7 +77,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Número de teléfono</mat-label>
             <input matInput [formControl]="phoneNumber" type="text" formControlName="phoneNumber"
                 [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched">
@@ -102,7 +102,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field *ngIf="selectedType === 'CLIENT'">
+        <mat-form-field *ngIf="selectedType === 'CLIENT'" appearance="fill">
             <mat-label>Dirección</mat-label>
             <input matInput [formControl]="address" type="text" formControlName="address"
                 [class.is-invalid]="address.invalid && address.touched">
@@ -111,7 +111,7 @@
             </mat-error>
         </mat-form-field>
     
-        <mat-form-field *ngIf="selectedType === 'CLIENT'">
+        <mat-form-field *ngIf="selectedType === 'CLIENT'" appearance="fill">
             <mat-label>Ciudad</mat-label>
             <input matInput [formControl]="city" type="text" formControlName="city"
                 [class.is-invalid]="city.invalid && city.touched">
@@ -120,7 +120,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field *ngIf="selectedType === 'WORKER'">
+        <mat-form-field *ngIf="selectedType === 'WORKER'" appearance="fill">
             <mat-label>Número de profesional</mat-label>
             <input matInput [formControl]="professionalNumber" type="text" formControlName="professionalNumber"
                 [class.is-invalid]="professionalNumber.invalid && professionalNumber.touched">
@@ -129,7 +129,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field *ngIf="selectedType === 'WORKER'">
+        <mat-form-field *ngIf="selectedType === 'WORKER'" appearance="fill">
             <mat-label>Puesto</mat-label>
             <input matInput [formControl]="occupation" type="text" formControlName="occupation"
                 [class.is-invalid]="occupation.invalid && occupation.touched">
@@ -141,6 +141,6 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancelar</button>
-    <button mat-button (click)="submit()">OK</button>
+    <button mat-stroked-button color="primary" (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="accent" (click)="submit()">OK</button>
 </div>
