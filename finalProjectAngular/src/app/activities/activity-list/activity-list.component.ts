@@ -18,9 +18,7 @@ import { ActivityService } from '../activity.service';
 })
 export class ActivityListComponent implements OnInit {
 
-  center: Center/*  = {
-    name: "Mi centrito"
-  } as Center */;
+  center: Center;
 
   loggedUser: Session;
   types = [
@@ -38,74 +36,7 @@ export class ActivityListComponent implements OnInit {
     }
   ]
 
-  activitiesList: Activity[];/* = [
-    {
-      id: 1,
-      title: "Caminata",
-      description: "Caminata por el campito",
-      center: 1, 
-      date: "2021/03/08",
-      time: "7:00 PM",
-      type: "LOCAL_TOUR",
-      users: [],
-      workers: []
-    },
-    {
-      id: 1,
-      title: "Caminata",
-      description: "Caminata por el campito",
-      center: 1, 
-      date: "2021/03/08",
-      time: "17:00",
-      type: "LOCAL_TOUR",
-      users: [],
-      workers: []
-    },
-    {
-      id: 1,
-      title: "Caminata",
-      description: "Caminata por el campito",
-      center: 1, 
-      date: "2021/03/08",
-      time: "17:00",
-      type: "LOCAL_TOUR",
-      users: [],
-      workers: []
-    },
-    {
-      id: 1,
-      title: "Caminata",
-      description: "Caminata por el campito",
-      center: 1, 
-      date: "2021/03/08",
-      time: "17:00",
-      type: "LOCAL_TOUR",
-      users: [],
-      workers: []
-    },
-    {
-      id: 1,
-      title: "Caminata",
-      description: "Caminata por el campito",
-      center: 1, 
-      date: "2021/03/08",
-      time: "17:00",
-      type: "LOCAL_TOUR",
-      users: [],
-      workers: []
-    },
-    {
-      id: 1,
-      title: "Caminata",
-      description: "Caminata por el campito",
-      center: 1, 
-      date: "2021/03/08",
-      time: "17:00",
-      type: "LOCAL_TOUR",
-      users: [],
-      workers: []
-    }
-  ] */
+  activitiesList: Activity[];
 
   constructor(
     private readonly activityService: ActivityService, 
@@ -233,13 +164,13 @@ export class ActivityListComponent implements OnInit {
   getImageByType(value: string): string {
     switch(value) {
       case 'LOCAL_TOUR':
-        return "../../../assets/activity-types/busbien.png";
+        return "../../../assets/activity-types/excursion.png";
       case 'INSIDE':
-        return "../../../assets/activity-types/descarga.jpg";
+        return "../../../assets/activity-types/centroguay.png";
       case 'TRIP':
-        return "../../../assets/activity-types/bien.png";
+        return "../../../assets/activity-types/viaje.png";
       default:
-        return "../../../assets/activity-types/trip.png";
+        return "../../../assets/activity-types/viaje.png";
     }
   }
 

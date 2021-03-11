@@ -24,6 +24,9 @@ mat-card-title:hover {
   font-size: 30px !important;
 }
 
+
+
+
 mat-card-content{
   font-family: 'Dosis', sans-serif;
   font-size: 15px !important;
@@ -56,8 +59,18 @@ width: 500px;
   position: fixed;
   bottom: 30px;
   right: 30px;
+  background-color: #fce38a;
+}
+
+.icon{
+  color:black;
 }
 
 #editBtn {
   background-color: gainsboro;
+}
+
+.me-apunto{
+  background-color: #fce38a;
+  color: black;
 }

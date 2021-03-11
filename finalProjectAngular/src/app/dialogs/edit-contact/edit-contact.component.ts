@@ -72,10 +72,10 @@ export class EditContactComponent implements OnInit {
     } else if(this.data.body instanceof Worker) {
       this.selectedType = "WORKER";
       this.contactForm = this.fb.group({
-        name: [this.data.body?.name || '', [Validators.required]],
-        lastName: [this.data.body?.lastName || '', [Validators.required]],
+        name: [this.data.body?.name || '', [Validators.required, CustomValidators.nameValidator]],
+        lastName: [this.data.body?.lastName || '', [Validators.required, CustomValidators.nameValidator]],
         secondSurname: [this.data.body?.secondSurname || '' ,[CustomValidators.nameValidator]],
-        phoneNumber: [this.data.body?.phoneNumber || '', [Validators.required]],
+        phoneNumber: [this.data.body?.phoneNumber || '', [Validators.required, CustomValidators.phoneValidator]],
         center: [this.data.body?.center || '', [Validators.required]],
         professionalNumber: [this.data.body?.professionalNumber || '', [Validators.required]],
         occupation: [this.data.body?.occupation || '', [Validators.required]],

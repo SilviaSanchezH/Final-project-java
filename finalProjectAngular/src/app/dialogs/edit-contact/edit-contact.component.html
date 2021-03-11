@@ -84,7 +84,7 @@
             <mat-error *ngIf="phoneNumber.hasError('required')">
                 El teléfono es necesario
             </mat-error>
-            <mat-error *ngIf="username.hasError('invalidphone')">
+            <mat-error *ngIf="phoneNumber.hasError('invalidphone')">
                 El formato es invalido
             </mat-error>
         </mat-form-field>
@@ -141,6 +141,6 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-stroked-button color="primary" (click)="onNoClick()">Cancelar</button>
-    <button mat-raised-button color="accent" (click)="submit()">OK</button>
+    <button class="cancelBtn" mat-stroked-button color="basic" (click)="onNoClick()">Cancelar</button>
+    <button class = "btnok" mat-raised-button (click)="submit()">OK</button>
 </div>

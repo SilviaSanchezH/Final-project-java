@@ -19,3 +19,14 @@ mat-form-field {
     display: flex;
     justify-content: flex-end;
 }
+
+.cancelBtn{
+    background-color: gainsboro;
+    font-family: 'Dosis', sans-serif;
+}
+
+.okBtn{
+    background-color: #fce38a;
+    color: black;
+    font-family: 'Dosis', sans-serif;
+}

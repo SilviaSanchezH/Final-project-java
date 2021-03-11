@@ -13,3 +13,16 @@ mat-form-field {
     display: flex;
     justify-content: flex-end;
 }
+
+.btnok{
+    background-color: #fce38a;
+    color: black;
+    font-family: 'Dosis', sans-serif;
+
+}
+
+.cancelBtn{
+    background-color: gainsboro;
+    font-family: 'Dosis', sans-serif;
+
+}

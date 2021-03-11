@@ -1,5 +1,6 @@
 .navigator{
-  background-color:#ee8f98f1;
+  background-color:#0b2941;
+  ;
   width: 100vw;
   height: 80px;
   display: flex;
@@ -7,6 +8,16 @@
 
 .home{
   font-family: 'Alegreya', serif;
+  color: #fce38a
+}
+
+.activities{
+  color: #fce38a;
+}
+
+.contacts{
+  color: #fce38a;
+
 }
 
 .left{

@@ -8,7 +8,7 @@
       <img mat-card-image [src]="getImageByType(activity.type)">
     <mat-card-content>
       <div class="description">
-        <p>{{activity.description}}</p>
+        <p class = "description">{{activity.description}}</p>
       </div>
       <div class="date">
         <p>Fecha: {{activity.date}}</p>
@@ -17,7 +17,7 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="actions">
-        <button  mat-raised-button color="accent" (click)="goToActivity(activity)" [disabled]="disableGoToActivity(activity)">{{disableGoToActivity(activity) ? 'YA ESTOY APUNTADO' :'¡ME APUNTO!'}}</button>
+        <button class="me-apunto" mat-raised-button color="accent" (click)="goToActivity(activity)" [disabled]="disableGoToActivity(activity)">{{disableGoToActivity(activity) ? 'YA ESTOY APUNTADO' :'¡ME APUNTO!'}}</button>
         <div class="worker-buttons" *ngIf="loggedUser?.role === 'WORKER'">
           <button  mat-raised-button (click)="editActivity(activity)" id="editBtn">Editar
             <mat-icon>edit</mat-icon>
@@ -32,5 +32,5 @@
 </div>
 
 <button mat-fab aria-label="Nueva actividad" matTooltip="Añadir actividad" id="addBtn" mat-button (click)="addActivity()" *ngIf="loggedUser?.role ==='WORKER'">
-  <mat-icon>add</mat-icon>
+  <mat-icon class= icon>add</mat-icon>
 </button>
