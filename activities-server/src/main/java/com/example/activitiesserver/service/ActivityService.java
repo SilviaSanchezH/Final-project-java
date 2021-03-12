@@ -45,15 +45,20 @@ public class ActivityService {
     }
 
     public List<ActivityDTO> getActivitiesByCenter(Long centerId) {
-        List<Activity> activities = activityRepository.findActivitiesByCenter(centerId);
-        List<ActivityDTO> activityDTOList = new ArrayList<ActivityDTO>();
-        for(Activity activity: activities) {
-            List<Long> clients = activity.getClients().stream().map(Client::getClientId).collect(Collectors.toList());
-            List<Long> workers = activity.getWorkers().stream().map(Worker::getWorkerId).collect(Collectors.toList());
-            activityDTOList.add(new ActivityDTO(activity.getId(), activity.getTitle(), activity.getDescription(), activity.getType().toString(),
-                    activity.getDate(), activity.getTime(), activity.getCenter(), clients, workers));
+        try {
+            centerClient.getCenter(centerId);
+            List<Activity> activities = activityRepository.findActivitiesByCenter(centerId);
+            List<ActivityDTO> activityDTOList = new ArrayList<ActivityDTO>();
+            for(Activity activity: activities) {
+                List<Long> clients = activity.getClients().stream().map(Client::getClientId).collect(Collectors.toList());
+                List<Long> workers = activity.getWorkers().stream().map(Worker::getWorkerId).collect(Collectors.toList());
+                activityDTOList.add(new ActivityDTO(activity.getId(), activity.getTitle(), activity.getDescription(), activity.getType().toString(),
+                        activity.getDate(), activity.getTime(), activity.getCenter(), clients, workers));
+            }
+            return activityDTOList;
+        } catch (ResponseStatusException exception) {
+            throw exception;
         }
-        return activityDTOList;
     }
 
     public ActivityDTO getActivity(Long id) {

@@ -26,12 +26,6 @@ public class Client extends User{
         this.age = age;
     }
 
-    public Client(String username, String name, String lastName, String secondSurname, String phoneNumber, String address, String city, Long center, Gender gender, int age) {
-        super(username, name, lastName, secondSurname, phoneNumber, center, gender);
-        this.address = address;
-        this.city = city;
-        this.age = age;
-    }
 
     public Client() {
         super();

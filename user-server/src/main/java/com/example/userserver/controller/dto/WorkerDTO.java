@@ -1,16 +1,32 @@
 package com.example.userserver.controller.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class WorkerDTO {
     private Long id;
+    @NotEmpty
     private String username;
+    @NotEmpty
+    @Size(min=6, message = "Password must be at least 6 characters long")
     private String password;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String lastName;
     private String secondSurname;
+    @NotEmpty
+    @Pattern(regexp = "^[679][0-9]{8}$", message = "Not valid phone number format")
     private String phoneNumber;
+    @NotNull
     private Long center;
+    @NotEmpty
     private String gender;
+    @NotEmpty
     private String occupation;
+    @NotEmpty
     private String professionalNumber;
 
     public WorkerDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String occupation, String professionalNumber, String gender) {

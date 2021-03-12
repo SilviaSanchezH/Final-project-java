@@ -14,7 +14,8 @@ public class ClientDTO {
     private String gender;
     private int age;
 
-    public ClientDTO(String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String address, String city, String gender, int age) {
+    public ClientDTO(Long id, String username, String password, String name, String lastName, String secondSurname, String phoneNumber, Long center, String address, String city, String gender, int age) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -69,6 +70,14 @@ public class ClientDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 
     public String getPhoneNumber() {

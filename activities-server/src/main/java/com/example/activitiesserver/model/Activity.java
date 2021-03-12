@@ -8,6 +8,8 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import org.apache.catalina.User;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.jdbc.Work;
 
 import javax.persistence.*;
@@ -37,7 +39,8 @@ public class Activity {
             joinColumns = @JoinColumn(name = "activity_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name="client_id", nullable = false)
     )
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH},fetch=FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     private List<Client> clients;
 
     @JoinTable(
@@ -45,7 +48,8 @@ public class Activity {
             joinColumns = @JoinColumn(name = "activity_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name="worker_id", nullable = false)
     )
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH},fetch=FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     private List<Worker> workers;
 
     public Activity(String title, String description, ActivityType type, LocalDate date, String time, Long center) {

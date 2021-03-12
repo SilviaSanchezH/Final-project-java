@@ -1,6 +1,7 @@
 package com.example.userserver.model;
 
 import com.example.userserver.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Role role;
 
     public User(Long id, String username, String secondSurname, String password, String name, String lastName, String phoneNumber, Long center, Gender gender) {

@@ -13,7 +13,6 @@ public class Role {
     @Enumerated(EnumType.STRING)
     private RoleEnum name;
     @OneToOne
-    @JsonIgnore
     private User user;
 
     public Role(RoleEnum name, User user) {

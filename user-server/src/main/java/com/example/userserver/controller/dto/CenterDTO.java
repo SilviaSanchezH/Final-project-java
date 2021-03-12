@@ -8,15 +8,13 @@ public class CenterDTO {
     private String address;
     private String city;
     private String phoneNumber;
-    private List<Long> workers;
 
-    public CenterDTO(Long id, String name, String address, String city, String phoneNumber, List<Long> workers) {
+    public CenterDTO(Long id, String name, String address, String city, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.city = city;
         this.phoneNumber = phoneNumber;
-        this.workers = workers;
     }
 
     public CenterDTO() {
@@ -62,11 +60,4 @@ public class CenterDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Long> getWorkers() {
-        return workers;
-    }
-
-    public void setWorkers(List<Long> workers) {
-        this.workers = workers;
-    }
 }
