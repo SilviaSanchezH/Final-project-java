@@ -12,5 +12,5 @@ CREATE TABLE `center` (
 );
 
 INSERT INTO `center` (id, address, city, name, phone_number) VALUES 
-(1, 'Calle oxígeno', 'Madrid', 'Centro Mayores Arbolitos', '919987456'),
-(2, 'Calle laguna', 'Madrid', 'El centrito', '919987476');
+(1, 'Calle oxígeno, nº4', 'Madrid', 'Centro Mayores Arbolitos', '919987456'),
+(2, 'Calle laguna, nº9', 'Madrid', 'El centrito', '919987476');
