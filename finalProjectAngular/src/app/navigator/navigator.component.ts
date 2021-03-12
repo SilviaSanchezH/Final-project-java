@@ -15,7 +15,9 @@ export class NavigatorComponent implements OnInit{
   constructor(private storageService:StorageService, private readonly contactService: ContactService) { }
 
   ngOnInit() {
-    this.contactService.getCenter(this.storageService.getCurrentSession()?.center).subscribe(center => this.center = center);
+    this.storageService.loadCenter$.subscribe(_result => {
+      this.contactService.getCenter(this.storageService.getCurrentSession()?.center).subscribe(center => this.center = center);
+    })
   }
 
   isAuthenticated(): boolean {

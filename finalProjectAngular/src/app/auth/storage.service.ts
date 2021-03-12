@@ -1,11 +1,13 @@
 import {Injectable} from "@angular/core";
 import { Router } from '@angular/router';
+import { BehaviorSubject } from "rxjs";
 import {Session} from "./models/session.model";
 
 @Injectable()
 export class StorageService {
   private localStorageService: Storage;
   private currentSession : Session = null;
+  public loadCenter$: BehaviorSubject<boolean> = new BehaviorSubject(true);
   constructor(private router: Router) {
     this.localStorageService = localStorage;
     this.currentSession = this.loadSessionData();
@@ -13,6 +15,7 @@ export class StorageService {
   setCurrentSession(session: Session): void {
     this.currentSession = session;
     this.localStorageService.setItem('currentUser', JSON.stringify(session));
+    this.loadCenter$.next(true);
   }
   loadSessionData(): Session{
     const sessionStr = this.localStorageService.getItem('currentUser');
