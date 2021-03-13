@@ -4,7 +4,7 @@
       <h1>Inicio de sesión</h1>
 
       <mat-form-field class="">
-        <mat-label>Username</mat-label>
+        <mat-label>Usuario</mat-label>
         <input matInput [formControl]="username" placeholder="Ex. user" type="text"
           formControlName="username" [class.is-invalid]="username.invalid && username.touched">
         <mat-error *ngIf="username.hasError('required')">
@@ -21,7 +21,7 @@
         </mat-error>
       </mat-form-field>
 
-      <button type="submit">Iniciar sesión</button>
+      <button type="submit">Iniciar sesión</button> 
       <div class="errorMsg" *ngIf="notExists">
         <mat-icon>error</mat-icon> Usuario o contraseña incorrectos
       </div>

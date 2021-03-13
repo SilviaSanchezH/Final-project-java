@@ -34,6 +34,7 @@ mat-panel-title {
     justify-content: space-between;
     font-size: 20px;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 mat-list-item{
@@ -43,7 +44,7 @@ mat-list-item{
 
 .avatar > img{
     height: 75px;
-    max-height: max-content;
+    max-height: max-content; 
     margin: 15px;
 }
 

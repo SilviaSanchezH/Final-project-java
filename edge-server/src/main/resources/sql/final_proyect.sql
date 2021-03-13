@@ -88,7 +88,7 @@ CREATE TABLE `center` (
 
 INSERT INTO `center` (id, address, city, name, phone_number) VALUES 
 (1, 'Calle oxígeno, nº4', 'Madrid', 'Centro Mayores Arbolitos', '919987456'),
-(2, 'Calle laguna, nº9', 'Madrid', 'El centrito', '919987476');
+(2, 'Calle laguna, nº9', 'Madrid', 'Centro Mayores Alegría', '919987476');
 
 DROP SCHEMA IF EXISTS activities;
 CREATE SCHEMA activities;
@@ -134,13 +134,13 @@ CREATE TABLE `activities_workers` (
   FOREIGN KEY (`activity_id`) REFERENCES `activity` (`id`)
 );
 
-INSERT INTO activity (id, center, `date`, title, `time`, `description`, `type`) VALUES 
+INSERT INTO activity (id, center, `date`, title, `time`, `description`, `type`) VALUES
 (1, 1, '2021/04/30', 'Excursión al campito', '5:00 PM', 'Vamos a pasar un bonito día al campito' , 'LOCAL_TOUR'),
 (2, 1, '2021/03/28', 'Bingo', '5:00 PM', 'Vamos a pasar una tarde divertida jugando al bingo!', 'INSIDE'),
 (3, 1, '2021/06/28', 'Viaje a Benidorm', '5:00 PM', 'Vamos a hacer un viaje a Benidorm!', 'TRIP'),
-(4, 2, '2021/04/30', 'Excursión al campito', '5:00 PM','Vamos a pasar un bonito día a la pradera' , 'LOCAL_TOUR'),
+(4, 2, '2021/04/30', 'Excursión al Museo del Prado', '5:00 PM','Vamos a visitar el museo del Prado' , 'LOCAL_TOUR'),
 (5, 2, '2021/03/28', 'Cartas', '5:00 PM', 'Vamos a pasar una tarde divertida jugando al bingo!', 'INSIDE'),
-(6, 2, '2021/06/28', 'Viaje a Benidorm', '5:00 PM', 'Vamos a hacer un viaje a Benidorm!', 'TRIP');
+(6, 2, '2021/06/28', 'Viaje a Cartagena', '5:00 PM', 'Vamos a hacer un viaje a Cartagena!', 'TRIP');
 
 INSERT INTO `client` (client_id) VALUES
 (1),

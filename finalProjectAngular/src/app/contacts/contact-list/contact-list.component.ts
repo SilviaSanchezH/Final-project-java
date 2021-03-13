@@ -50,116 +50,9 @@ export class ContactListComponent implements OnInit {
     }
   ]
   
-  workerList: Worker[]/*  = [
-  {
-    id: 1,
-    username: 'paco',
-    password: '1234',
-    name: 'paco',
-    lastname: 'sanchez uwuwuwuwuuuwuwuw',
-    secondSurname: null,
-    phoneNumber: '987654332',
-    center: 2,
-    role: {
-      id: 1,
-      name: 'WORKER',
-    },
-    gender: 'FEMALE',
-    occupation: 'enfermero',
-    professionalNumber: '89',
-  },
-  {
-    id: 2,
-    username: 'paco',
-    password: '1234',
-    name: 'paco',
-    lastname: 'sanchez',
-    secondSurname: null,
-    phoneNumber: '987654332',
-    center: 2,
-    role: {
-      id: 1,
-      name: 'WORKER',
-    },
-    gender: 'FEMALE',
-    occupation: 'enfermero',
-    professionalNumber: '89',
-  },
-  {
-    id: 3,
-    username: 'paco',
-    password: '1234',
-    name: 'paco',
-    lastname: 'sanchez',
-    secondSurname: null,
-    phoneNumber: '987654332',
-    center: 2,
-    role: {
-      id: 1,
-      name: 'WORKER',
-    },
-    gender: 'FEMALE',
-    occupation: 'enfermero',
-    professionalNumber: '89',
-  }
-  ] */;
+  workerList: Worker[];
 
-  clientList: Client[]/*  = [
-    {
-      id: 4,
-      username: 'paco',
-      password: '1234',
-      name: 'paco',
-      lastname: 'sanchez',
-      secondSurname: null,
-      phoneNumber: '987654332',
-      center: 1,
-      role: {
-        id: 1,
-        name: 'CLIENT',
-      },
-      gender: 'MALE',
-      address: 'Calle alcalá',
-      city: 'Madrid',
-      age: 70,
-    },
-    {
-      id: 5,
-      username: 'paco',
-      password: '1234',
-      name: 'paco',
-      lastname: 'sanchez',
-      secondSurname: null,
-      phoneNumber: '987654332',
-      center: 1,
-      role: {
-        id: 1,
-        name: 'CLIENT',
-      },
-      gender: 'MALE',
-      address: 'Calle alcalá',
-      city: 'Madrid',
-      age: 70,
-    },
-    {
-      id: 6,
-      username: 'paco',
-      password: '1234',
-      name: 'paco',
-      lastname: 'sanchez',
-      secondSurname: null,
-      phoneNumber: '987654332',
-      center: 1,
-      role: {
-        id: 1,
-        name: 'CLIENT',
-      },
-      gender: 'MALE',
-      address: 'Calle alcalá',
-      city: 'Madrid',
-      age: 70,
-    }
-    ] */;
+  clientList: Client[];
 
   getCenter() {
     this.contactService.getCenter(this.loggedUser?.center).subscribe(center => this.center = center, error => {
@@ -201,7 +94,7 @@ export class ContactListComponent implements OnInit {
   editClient(client: Client) {
     const dialogRef = this.dialog.open(EditContactComponent, {
       width: '800px',
-      data: { title: 'Editar a' + ' ' + client.name + ' ' + client.lastName, body: new Client(client) },
+      data: { title: 'Editar' + ' ' + client.name + ' ' + client.lastName, body: new Client(client) },
       disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -246,7 +139,7 @@ export class ContactListComponent implements OnInit {
   editWorker(worker: Worker) {
     const dialogRef = this.dialog.open(EditContactComponent, {
       width: '800px',
-      data: { title: 'Editar ' + worker.name + worker.lastName, body: new Worker(worker) },
+      data: { title: 'Editar' + ' ' + worker.name + ' ' +worker.lastName, body: new Worker(worker) },
       disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {

@@ -42,11 +42,11 @@ CREATE TABLE `worker` (
 );
 
 INSERT INTO `user` (id, center, gender, last_name, second_surname, name, password, phone_number, username) VALUES 
-(1, 1, 'MALE', 'Sanchez', 'Lopez', 'Pablo', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'pablito'),
-(2, 1, 'FEMALE', 'Garcia', 'Aguado', 'Laura', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'laurita'),
-(3, 2, 'MALE', 'Rodriguez', 'Lopez', 'Julio', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'julito'),
-(4, 2, 'FEMALE', 'Lopez', 'Aguado', 'Irene', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'irenerex'),
-(5, 1, 'MALE', 'Sanchez', 'Lopez', 'Paco', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'paquito'),
+(1, 1, 'MALE', 'Sánchez', 'Lopez', 'Pablo', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'pablito'),
+(2, 1, 'FEMALE', 'García', 'Aguado', 'Laura', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'laurita'),
+(3, 2, 'MALE', 'Rodríguez', 'Lopez', 'Julio', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'julito'),
+(4, 2, 'FEMALE', 'López', 'Aguado', 'Irene', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'irenerex'),
+(5, 1, 'MALE', 'Sánchez', 'Lopez', 'Paco', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'paquito'),
 (6, 1, 'FEMALE', 'Ruiz', 'Aguado', 'Mila', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'miluxi'),
 (7, 2, 'MALE', 'Toledo', 'Lopez', 'Enrique', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'enrique01'),
 (8, 2, 'FEMALE', 'Alvarez', 'Aguado', 'Celia', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'celiia');
@@ -88,7 +88,7 @@ CREATE TABLE `center` (
 
 INSERT INTO `center` (id, address, city, name, phone_number) VALUES 
 (1, 'Calle oxígeno, nº4', 'Madrid', 'Centro Mayores Arbolitos', '919987456'),
-(2, 'Calle laguna, nº9', 'Madrid', 'El centrito', '919987476');
+(2, 'Calle laguna, nº9', 'Madrid', 'Centro Mayores Alegría', '919987476');
 
 DROP SCHEMA IF EXISTS activities;
 CREATE SCHEMA activities;
@@ -138,9 +138,9 @@ INSERT INTO activity (id, center, `date`, title, `time`, `description`, `type`) 
 (1, 1, '2021/04/30', 'Excursión al campito', '5:00 PM', 'Vamos a pasar un bonito día al campito' , 'LOCAL_TOUR'),
 (2, 1, '2021/03/28', 'Bingo', '5:00 PM', 'Vamos a pasar una tarde divertida jugando al bingo!', 'INSIDE'),
 (3, 1, '2021/06/28', 'Viaje a Benidorm', '5:00 PM', 'Vamos a hacer un viaje a Benidorm!', 'TRIP'),
-(4, 2, '2021/04/30', 'Excursión al campito', '5:00 PM','Vamos a pasar un bonito día a la pradera' , 'LOCAL_TOUR'),
+(4, 2, '2021/04/30', 'Excursión al Museo del Prado', '5:00 PM','Vamos a visitar el museo del Prado' , 'LOCAL_TOUR'),
 (5, 2, '2021/03/28', 'Cartas', '5:00 PM', 'Vamos a pasar una tarde divertida jugando al bingo!', 'INSIDE'),
-(6, 2, '2021/06/28', 'Viaje a Benidorm', '5:00 PM', 'Vamos a hacer un viaje a Benidorm!', 'TRIP');
+(6, 2, '2021/06/28', 'Viaje a Cartagena', '5:00 PM', 'Vamos a hacer un viaje a Cartagena!', 'TRIP');
 
 INSERT INTO `client` (client_id) VALUES
 (1),

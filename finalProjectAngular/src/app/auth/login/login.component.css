@@ -2,22 +2,24 @@
   min-width: 300px;
   max-width: 20%;
   margin: 0px auto;
-  background: rgba(255, 255, 255, 0.15);
+  background: #ffffff;
   padding: 2rem 3rem;
   margin: auto;
   border-radius: 1rem;
-  color: black;
+  color: #0b2941;
   margin-top: 10rem;
+  font-family: 'Alegreya', serif
 }
 
 .loginForm form button {
   text-transform: uppercase;
+  font-family: 'Dosis', sans-serif;
   letter-spacing: 0.15em;
   border: none;
   font-size: 0.875rem;
-  color: #ffffff;
+  color: #fce38a;  
   font-weight: bold;
-  background-color: #00adb5;
+  background-color: #0b2941;
   width: 100%;
   display: block;
   padding: 0.875rem 1rem;
@@ -26,8 +28,13 @@
   cursor: pointer;
 }
 
+.mat-form-field{
+  font-family: 'Alegreya', serif !important;
+}
+
 .loginForm form button:hover {
-  background: #00acb5b4;
+  background: #fce38a;
+  color: #0b2941;
 }
 
 .loginForm .mat-stroked-button {

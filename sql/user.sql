@@ -43,12 +43,12 @@ CREATE TABLE `worker` (
 
 INSERT INTO `user` (id, center, gender, last_name, second_surname, name, password, phone_number, username) VALUES 
 (1, 1, 'MALE', 'Sanchez', 'Lopez', 'Pablo', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'pablito'),
-(2, 1, 'MALE', 'Garcia', 'Aguado', 'Julio', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'julito'),
-(3, 2, 'FEMALE', 'Rodriguez', 'Lopez', 'Laura', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'laurita'),
+(2, 1, 'FEMALE', 'Garcia', 'Aguado', 'Laura', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'laurita'),
+(3, 2, 'MALE', 'Rodriguez', 'Lopez', 'Julio', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'julito'),
 (4, 2, 'FEMALE', 'Lopez', 'Aguado', 'Irene', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'irenerex'),
 (5, 1, 'MALE', 'Sanchez', 'Lopez', 'Paco', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'paquito'),
-(6, 1, 'MALE', 'Ruiz', 'Aguado', 'Enrique', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'enrique01'),
-(7, 2, 'FEMALE', 'Toledo', 'Lopez', 'Mila', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'miluxi'),
+(6, 1, 'FEMALE', 'Ruiz', 'Aguado', 'Mila', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'miluxi'),
+(7, 2, 'MALE', 'Toledo', 'Lopez', 'Enrique', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852741', 'enrique01'),
 (8, 2, 'FEMALE', 'Alvarez', 'Aguado', 'Celia', '$2a$10$.zKShNvvjf5izYLCdYvKBe/l15/x5CoyWK1RFM/xsGLy/kdOHmm.K', '963852541', 'celiia');
 
 INSERT INTO `worker` (occupation, professional_number, id) VALUES 

@@ -46,9 +46,9 @@ INSERT INTO activity (id, center, `date`, title, `time`, `description`, `type`) 
 (1, 1, '2021/04/30', 'Excursión al campito', '5:00 PM', 'Vamos a pasar un bonito día al campito' , 'LOCAL_TOUR'),
 (2, 1, '2021/03/28', 'Bingo', '5:00 PM', 'Vamos a pasar una tarde divertida jugando al bingo!', 'INSIDE'),
 (3, 1, '2021/06/28', 'Viaje a Benidorm', '5:00 PM', 'Vamos a hacer un viaje a Benidorm!', 'TRIP'),
-(4, 2, '2021/04/30', 'Excursión al campito', '5:00 PM','Vamos a pasar un bonito día a la pradera' , 'LOCAL_TOUR'),
+(4, 2, '2021/04/30', 'Excursión al Museo del Prado', '5:00 PM','Vamos a visitar el museo del Prado' , 'LOCAL_TOUR'),
 (5, 2, '2021/03/28', 'Cartas', '5:00 PM', 'Vamos a pasar una tarde divertida jugando al bingo!', 'INSIDE'),
-(6, 2, '2021/06/28', 'Viaje a Benidorm', '5:00 PM', 'Vamos a hacer un viaje a Benidorm!', 'TRIP');
+(6, 2, '2021/06/28', 'Viaje a Cartagena', '5:00 PM', 'Vamos a hacer un viaje a Cartagena!', 'TRIP');
 
 INSERT INTO `client` (client_id) VALUES
 (1),

@@ -1,6 +1,5 @@
 .navigator{
   background-color:#0b2941;
-  ;
   width: 100vw;
   height: 80px;
   display: flex;
@@ -29,6 +28,7 @@
 .center {
   margin-left: auto !important;
   margin-right: auto !important;
+  justify-content: center;
 }
 
 .container-image{

@@ -27,6 +27,7 @@ h2 {
   font-size: 30px !important;
   font-family: 'Dosis', sans-serif !important;
   font-weight: bold !important;
+  text-transform: capitalize;
 }
 
 .mat-dialog-content * {

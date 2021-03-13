@@ -31,6 +31,6 @@
   </mat-card>
 </div>
 
-<button mat-fab aria-label="Nueva actividad" matTooltip="Añadir actividad" id="addBtn" mat-button (click)="addActivity()" *ngIf="loggedUser?.role ==='WORKER'">
+<button mat-fab aria-label="Nueva actividad" class= "add" matTooltip="Añadir actividad" id="addBtn" mat-button (click)="addActivity()" *ngIf="loggedUser?.role ==='WORKER'">
   <mat-icon class= icon>add</mat-icon>
 </button>

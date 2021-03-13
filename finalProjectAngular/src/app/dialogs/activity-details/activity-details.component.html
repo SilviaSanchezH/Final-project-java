@@ -4,13 +4,13 @@
         <div class="workers">
             <h2>Personal</h2>
             <mat-list>
-                <mat-list-item *ngFor="let worker of workers">{{worker.name}} {{worker.lastName}}</mat-list-item>
+                <mat-list-item class="usuario" *ngFor="let worker of workers">{{worker.name}} {{worker.lastName}}</mat-list-item>
             </mat-list>
         </div>
         <div class="clients">
             <h2>Usuarios</h2>
             <mat-list>
-                <mat-list-item *ngFor="let client of clients">{{client.name}} {{client.lastName}}</mat-list-item>
+                <mat-list-item class="usuario" *ngFor="let client of clients">{{client.name}} {{client.lastName}}</mat-list-item>
             </mat-list>
         </div>
     </div>
