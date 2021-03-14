@@ -57,7 +57,7 @@
 
         <mat-form-field *ngIf="selectedType === 'CLIENT'" appearance="fill">
             <mat-label>Edad</mat-label>
-            <input matInput [formControl]="age" type="text" formControlName="age"
+            <input matInput [formControl]="age" type="number" formControlName="age"
                 [class.is-invalid]="age.invalid && age.touched">
             <mat-error *ngIf="age.hasError('required')">
                 La edad es necesaria
