@@ -108,7 +108,7 @@ class WorkerControllerTest {
         ).andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name").value("Ruben"))
                 .andReturn();
-        WorkerDTO responseWorker = objectMapper.readValue(result.getResponse().getContentAsString(), WorkerDTO.class);
+        Worker responseWorker = objectMapper.readValue(result.getResponse().getContentAsString(), Worker.class);
         assertTrue(workerRepository.findById(responseWorker.getId()).isPresent());
     }
 
@@ -165,7 +165,7 @@ class WorkerControllerTest {
         ).andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Ruben"))
                 .andReturn();
-        WorkerDTO responseWorker = objectMapper.readValue(result.getResponse().getContentAsString(), WorkerDTO.class);
+        Worker responseWorker = objectMapper.readValue(result.getResponse().getContentAsString(), Worker.class);
         assertTrue(workerRepository.findById(responseWorker.getId()).isPresent());
     }
 

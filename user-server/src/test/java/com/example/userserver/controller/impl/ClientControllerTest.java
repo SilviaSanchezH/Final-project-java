@@ -107,7 +107,7 @@ class ClientControllerTest {
         ).andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name").value("Mercedes"))
                 .andReturn();
-        ClientDTO responseClient = objectMapper.readValue(result.getResponse().getContentAsString(), ClientDTO.class);
+        Client responseClient = objectMapper.readValue(result.getResponse().getContentAsString(), Client.class);
         assertTrue(clientRepository.findById(responseClient.getId()).isPresent());
     }
 
@@ -161,7 +161,7 @@ class ClientControllerTest {
         ).andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Mercedes"))
                 .andReturn();
-        ClientDTO responseClient = objectMapper.readValue(result.getResponse().getContentAsString(), ClientDTO.class);
+        Client responseClient = objectMapper.readValue(result.getResponse().getContentAsString(), Client.class);
         assertTrue(clientRepository.findById(responseClient.getId()).isPresent());
     }
 

@@ -7,12 +7,12 @@
     </mat-card-header>
       <img mat-card-image [src]="getImageByType(activity.type)">
     <mat-card-content>
-      <div class="description">
+      <div class="description-container">
         <p class = "description">{{activity.description}}</p>
       </div>
       <div class="date">
-        <p>Fecha: {{activity.date}}</p>
-        <p>Hora: {{activity.time}}</p>
+        <p><strong>Fecha:</strong> {{activity.date}}</p>
+        <p><strong>Hora:</strong> {{activity.time}}</p>
       </div>
     </mat-card-content>
     <mat-card-actions>

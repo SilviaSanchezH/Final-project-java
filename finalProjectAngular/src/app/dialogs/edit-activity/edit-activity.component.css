@@ -10,9 +10,15 @@ mat-form-field {
     margin: 10px;
 }
 
-.mat-dialog-content form {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
+.input-field {
+    max-width: 204px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .mat-dialog-actions {
